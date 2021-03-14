@@ -1,0 +1,128 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/fonts/digitalix.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/images/dotline.png" type="Texture" id=2]
+[ext_resource path="res://src/scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/scenes/Enemy.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 1600 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 1600 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 539, 32 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 539, 32 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 64
+font_data = ExtResource( 1 )
+
+[node name="GameField" type="Node"]
+
+[node name="Field" type="Node" parent="."]
+
+[node name="Background" type="ColorRect" parent="Field"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Field/Background"]
+position = Vector2( 540, 960 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Wall" type="StaticBody2D" parent="Field"]
+
+[node name="LeftWall" type="CollisionShape2D" parent="Field/Wall"]
+position = Vector2( -32, 960 )
+shape = SubResource( 1 )
+
+[node name="RightWall" type="CollisionShape2D" parent="Field/Wall"]
+position = Vector2( 1112, 960 )
+shape = SubResource( 2 )
+
+[node name="EnemyGoal" type="Area2D" parent="Field"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Field/EnemyGoal"]
+position = Vector2( 540, -32 )
+shape = SubResource( 3 )
+
+[node name="PlayerGoal" type="Area2D" parent="Field"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Field/PlayerGoal"]
+position = Vector2( 540, 1952 )
+shape = SubResource( 4 )
+
+[node name="Interface" type="Node" parent="."]
+
+[node name="EnemyScore" type="Label" parent="Interface"]
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 32.0
+margin_top = 800.0
+margin_right = -252.0
+margin_bottom = -31.9999
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+valign = 2
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerScore" type="Label" parent="Interface"]
+anchor_top = 0.504
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 24.3201
+margin_right = -252.0
+margin_bottom = -800.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="Interface"]
+anchor_left = 0.5
+anchor_top = 0.03
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 252.0
+margin_top = 742.4
+margin_right = -32.0
+margin_bottom = -32.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "90"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( 540, 48 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 540, 1872 )
