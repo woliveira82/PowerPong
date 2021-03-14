@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="PowerPong"
-run/main_scene="res://src/scenes/Director.tscn"
+run/main_scene="res://src/scenes/SplashScreen.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+SceneDirector="*res://src/scenes/SceneDirector.tscn"
 
 [display]
 
