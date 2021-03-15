@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/fonts/digitalix.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/dotline.png" type="Texture" id=2]
-[ext_resource path="res://src/scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/scenes/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/scenes/game_elements/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/scenes/game_elements/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/scenes/game_elements/Ball.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/GameField.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 1600 )
@@ -30,6 +32,10 @@ size = 64
 font_data = ExtResource( 1 )
 
 [node name="GameField" type="Node"]
+script = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="Field" type="Node" parent="."]
 
@@ -126,3 +132,8 @@ position = Vector2( 540, 48 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 540, 1872 )
+
+[node name="Ball" parent="." instance=ExtResource( 5 )]
+position = Vector2( 540, 960 )
+[connection signal="body_entered" from="Field/EnemyGoal" to="." method="_on_EnemyGoal_body_entered"]
+[connection signal="body_entered" from="Field/PlayerGoal" to="." method="_on_PlayerGoal_body_entered"]

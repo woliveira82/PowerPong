@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/images/badblock.bmp" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/digitalix.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/scripts/FastMatch.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+outline_size = 2
+outline_color = Color( 0.498039, 0.498039, 0.498039, 1 )
+font_data = ExtResource( 2 )
+
+[node name="MainMenu" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 0.00012207
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_bottom = 6.10352e-05
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 270.0
+margin_bottom = -150.0
+custom_constants/separation = 16
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FastMatch" type="Button" parent="VBoxContainer"]
+margin_top = 191.0
+margin_right = 1080.0
+margin_bottom = 262.0
+custom_fonts/font = SubResource( 1 )
+text = "Fast Match"
+script = ExtResource( 3 )
+
+[node name="Championship" type="Button" parent="VBoxContainer"]
+margin_top = 278.0
+margin_right = 1080.0
+margin_bottom = 349.0
+custom_fonts/font = SubResource( 1 )
+text = "Championship"
+script = ExtResource( 3 )

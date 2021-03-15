@@ -33,6 +33,7 @@ tracks/1/keys = {
 }
 
 [node name="SceneDirector" type="CanvasLayer"]
+layer = 10
 follow_viewport_enable = true
 script = ExtResource( 1 )
 
