@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 
+const MAX_SPEED = 1500
 var speed = 500
 var velocity = Vector2(0.8, 1)
 
@@ -13,12 +14,13 @@ func _process(delta):
 			
 		else:
 			var pallete_x = collision_info.collider.position.x
-			var diff_x = position.x - pallete_x
-			print("Diferenca", diff_x)
-			#print("Ball", position.x)
-			velocity = velocity.bounce(collision_info.normal)
-			
-		speed += 100 if speed < 1500 else 0
+			var new_x = (position.x - pallete_x) / 150
+			var new_y = sqrt(1 - pow(new_x, 2))
+			if velocity.y > 0:
+				new_y = -new_y
+				
+			velocity = Vector2(new_x, new_y)
+			speed += 100 if speed < MAX_SPEED else 0
 
 
 func stop():
