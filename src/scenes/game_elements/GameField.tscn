@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/fonts/digitalix.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/dotline.png" type="Texture" id=2]
 [ext_resource path="res://src/scenes/game_elements/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/scenes/game_elements/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/scenes/game_elements/Opponent.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/scenes/game_elements/Ball.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/GameField.gd" type="Script" id=6]
 
@@ -150,7 +150,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Enemy" parent="." instance=ExtResource( 4 )]
+[node name="Opponent" parent="." instance=ExtResource( 4 )]
 position = Vector2( 540, 48 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
