@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 
 const MAX_SPEED = 1500
-var speed = 500
-var velocity = Vector2(0.8, 1)
+var speed = 0
+var velocity = Vector2.ZERO
 
 
 func _process(delta):
@@ -25,9 +25,13 @@ func _process(delta):
 
 func stop():
 	speed = 0
-
-
-func reset():
 	position = Vector2(540, 960)
+
+
+func start():
+	var new_y = rand_range(0.4, 0.8)
+	var new_x = sqrt(1 - pow(new_y, 2))
+	new_x = new_x * [1, -1][randi() % 2]
+	new_y = new_y * [1, -1][randi() % 2]
 	speed = 500
-	velocity = Vector2(0.8, 1)
+	velocity = Vector2(new_x, new_y)

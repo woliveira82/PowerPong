@@ -2,7 +2,6 @@ extends ColorRect
 
 
 func _ready():
-	#yield($AnimationPlayer, "ready")
 	$AnimationPlayer.play("fade_in_out")
 
 
