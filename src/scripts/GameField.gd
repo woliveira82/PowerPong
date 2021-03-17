@@ -1,7 +1,7 @@
 extends Node
 
 var player_score = 0
-var enemy_score = 0
+var opponent_score = 0
 
 
 func _ready():
@@ -25,7 +25,7 @@ func _on_PlayerGoal_body_entered(body):
 	_count_and_play()
 
 
-func _on_EnemyGoal_body_entered(body):
+func _on_OpponentGoal_body_entered(body):
 	_score_from_player(true)
 	_count_and_play()
 
@@ -36,8 +36,8 @@ func _score_from_player(confirm: bool):
 		$Interface/PlayerScore.text = str(player_score)
 	
 	else:
-		enemy_score += 1
-		$Interface/EnemyScore.text = str(enemy_score)
+		opponent_score += 1
+		$Interface/OpponentScore.text = str(opponent_score)
 
 
 func _on_BallTimer_timeout():
