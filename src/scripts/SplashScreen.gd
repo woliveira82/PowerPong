@@ -6,5 +6,4 @@ func _ready():
 
 
 func _to_main_menu():
-	#SceneDirector.change_to("res://src/scenes/MainMenu.tscn")
-	SceneDirector.change_to("res://src/scenes/game_elements/GameField.tscn")
+	SceneDirector.change_to("res://src/scenes/MainMenu.tscn")
