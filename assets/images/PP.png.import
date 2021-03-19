@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/badblock.bmp-da0468c57fa192ffb958c345d5c1c890.stex"
+path="res://.import/PP.png-b1e0671e0d3480c27e16b87572bcab77.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/badblock.bmp"
-dest_files=[ "res://.import/badblock.bmp-da0468c57fa192ffb958c345d5c1c890.stex" ]
+source_file="res://assets/images/PP.png"
+dest_files=[ "res://.import/PP.png-b1e0671e0d3480c27e16b87572bcab77.stex" ]
 
 [params]
 

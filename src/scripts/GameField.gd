@@ -9,6 +9,10 @@ func _ready():
 	$MatchTimer.start()
 
 
+func set_opponent_label(opponent_name):
+	$Interface/OpponentName.text = opponent_name
+
+
 func _count_and_play():
 	$Ball.stop()
 	$Interface/BallLabel.visible = true
