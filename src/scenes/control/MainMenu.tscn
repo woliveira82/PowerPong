@@ -51,17 +51,31 @@ __meta__ = {
 }
 
 [node name="FastMatch" type="Button" parent="VBoxContainer"]
-margin_top = 189.0
+margin_top = 92.0
 margin_right = 1080.0
-margin_bottom = 254.0
+margin_bottom = 157.0
 custom_fonts/font = SubResource( 1 )
 text = "Fast Match"
 script = ExtResource( 3 )
 
 [node name="Championship" type="Button" parent="VBoxContainer"]
+margin_top = 189.0
+margin_right = 1080.0
+margin_bottom = 254.0
+custom_fonts/font = SubResource( 1 )
+text = "Championship"
+script = ExtResource( 3 )
+
+[node name="Options" type="Button" parent="VBoxContainer"]
 margin_top = 286.0
 margin_right = 1080.0
 margin_bottom = 351.0
 custom_fonts/font = SubResource( 1 )
-text = "Championship"
-script = ExtResource( 3 )
+text = "Options"
+
+[node name="Credits" type="Button" parent="VBoxContainer"]
+margin_top = 383.0
+margin_right = 1080.0
+margin_bottom = 448.0
+custom_fonts/font = SubResource( 1 )
+text = "Credits"

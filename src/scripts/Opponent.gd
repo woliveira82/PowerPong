@@ -11,7 +11,6 @@ var _go_middle = false
 func _set_opponent(type):
 	if not type:
 		type = "Doe"
-		type = "Brainan"
 	
 	get_parent().set_opponent_label(type)
 	call("_set_" + type)
@@ -30,7 +29,7 @@ func _physics_process(delta):
 func _get_direction(_go_middle):
 	if _go_middle:
 		if _ball.position.y > 960:
-			return 1 if position.x < 540 else 0
+			return 1 if position.x < 540 else -1
 		
 	if abs(_ball.position.x - position.x) > _tolerance:
 		return 1 if _ball.position.x > position.x else -1
