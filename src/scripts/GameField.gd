@@ -5,8 +5,9 @@ var opponent_score = 0
 
 
 func _ready():
-	_count_and_play()
 	$MatchTimer.start()
+	$MatchTimer.paused = true
+	_count_and_play()
 
 
 func set_opponent_label(opponent_name):
@@ -35,6 +36,7 @@ func _on_OpponentGoal_body_entered(body):
 
 
 func _score_from_player(confirm: bool):
+	$MatchTimer.paused = true
 	if confirm:
 		player_score += 1
 		$Interface/PlayerScore.text = str(player_score)
@@ -46,4 +48,5 @@ func _score_from_player(confirm: bool):
 
 func _on_BallTimer_timeout():
 	$Interface/BallLabel.visible = false
+	$MatchTimer.paused = false
 	$Ball.start()

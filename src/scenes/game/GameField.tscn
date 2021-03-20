@@ -14,10 +14,10 @@ extents = Vector2( 32, 1600 )
 extents = Vector2( 32, 1600 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 539, 32 )
+extents = Vector2( 539, 256 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 539, 32 )
+extents = Vector2( 539, 256 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 64
@@ -84,13 +84,13 @@ shape = SubResource( 2 )
 [node name="OpponentGoal" type="Area2D" parent="Field"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Field/OpponentGoal"]
-position = Vector2( 540, -32 )
+position = Vector2( 540, -256 )
 shape = SubResource( 3 )
 
 [node name="PlayerGoal" type="Area2D" parent="Field"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Field/PlayerGoal"]
-position = Vector2( 540, 1952 )
+position = Vector2( 540, 2176 )
 shape = SubResource( 4 )
 
 [node name="Interface" type="Node" parent="."]

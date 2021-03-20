@@ -64,7 +64,6 @@ margin_right = 1080.0
 margin_bottom = 254.0
 custom_fonts/font = SubResource( 1 )
 text = "Championship"
-script = ExtResource( 3 )
 
 [node name="Options" type="Button" parent="VBoxContainer"]
 margin_top = 286.0
