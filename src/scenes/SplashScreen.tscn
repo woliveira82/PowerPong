@@ -34,6 +34,7 @@ tracks/1/keys = {
 }
 
 [node name="SplashScreen" type="ColorRect"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 0.00012207

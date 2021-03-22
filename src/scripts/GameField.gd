@@ -50,3 +50,21 @@ func _on_BallTimer_timeout():
 	$Interface/BallLabel.visible = false
 	$MatchTimer.paused = false
 	$Ball.start()
+
+
+func _on_MatchTimer_timeout():
+	$Ball.stop()
+	var final_result = "DRAW"
+	if player_score > opponent_score:
+		final_result = "YOU\nWIN"
+		
+	elif player_score < opponent_score:
+		final_result = "YOU\nLOSE"
+	
+	$Interface/Result.text = final_result
+	$Interface/ResultPanel.visible = true
+	$Interface/AnimationPlayer.play("end_game")
+
+
+func end_game():
+	GameData.end_game(player_score, opponent_score)
