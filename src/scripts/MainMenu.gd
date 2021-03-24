@@ -6,7 +6,7 @@ func _on_FastMatch_pressed():
 
 
 func _on_Championship_pressed():
-	pass # Replace with function body.
+	SceneDirector.change_to("res://src/scenes/control/ChampionshipSplash.tscn")
 
 
 func _on_Options_pressed():

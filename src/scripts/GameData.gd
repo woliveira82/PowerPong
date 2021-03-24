@@ -6,6 +6,7 @@ var next_opponent_type = null
 var player_name = "Player"
 var music_on = true
 var effects_on = true
+var championship = null
 
 
 func _ready():
@@ -14,7 +15,6 @@ func _ready():
 
 func end_game(player_score, opponent_score):
 	SceneDirector.change_to("res://src/scenes/control/MainMenu.tscn")
-	
 
 
 func set_random_opponent():
@@ -27,6 +27,13 @@ func save_options(pn, mo, eo):
 	music_on = mo
 	effects_on = eo
 	# Save
+
+
+func get_championship():
+	if not championship:
+		return "REGIONAL"
+	
+	return championship
 
 
 
