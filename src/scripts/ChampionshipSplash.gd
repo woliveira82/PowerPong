@@ -23,4 +23,4 @@ func _ready():
 	$AnimationPlayer.play("3_s_exit")
 
 func start_championship():
-	SceneDirector.change_to("res://src/scenes/control/MainMenu.tscn")
+	SceneDirector.change_to("res://src/scenes/control/Playoffs.tscn")
