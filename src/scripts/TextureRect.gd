@@ -2,8 +2,11 @@ extends TextureRect
 
 
 var drag = Vector2.ZERO
-const min_x = -3240
-const max_x = 0
+var next_match = null
+
+
+func _ready():
+	next_match = $PlayMatch
 
 
 func _process(delta):
@@ -13,8 +16,11 @@ func _process(delta):
 func _input(event):
 	if event is InputEventScreenDrag:
 		drag.x += event.relative.x
-		if drag.x < min_x:
-			drag.x = min_x
+		if drag.x < -3240:
+			drag.x = -3240
 			
-		elif drag.x > max_x:
-			drag.x = max_x
+		elif drag.x > 0:
+			drag.x = 0
+		
+		if rect_position.x < -1080:
+			next_match.rect_position.x = -rect_position.x

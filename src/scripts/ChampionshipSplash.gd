@@ -7,7 +7,7 @@ var world_cup = null
 
 
 func _ready():
-	var championship_name = GameData.get_championship()
+	var championship_name = GameData.get_championship().get_type()
 	$Type.text = championship_name
 	
 	if championship_name == "NATIONAL":

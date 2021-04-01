@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/fonts/digitalix.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/playoffs.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/images/NationalCup.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/RegionalCup.png" type="Texture" id=6]
 [ext_resource path="res://src/scripts/TextureRect.gd" type="Script" id=7]
+[ext_resource path="res://src/PowerPong.tres" type="Theme" id=8]
+[ext_resource path="res://src/scripts/PlayMatch.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -16,10 +18,17 @@ font_data = ExtResource( 1 )
 size = 56
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 1 )
+
 [node name="Playoffs" type="CanvasLayer"]
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_vertical_guides_": [ 2160.44 ]
+}
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Data" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 3240.0
@@ -30,7 +39,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="QuarterFinals" type="Label" parent="TextureRect"]
+[node name="QuarterFinals" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 136.0
@@ -43,7 +52,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SemiFinals" type="Label" parent="TextureRect"]
+[node name="SemiFinals" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1472.0
@@ -53,7 +62,7 @@ margin_bottom = -1519.0
 custom_fonts/font = SubResource( 1 )
 text = "SEMI-FINALS"
 
-[node name="FinalMatch" type="Label" parent="TextureRect"]
+[node name="FinalMatch" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2808.0
@@ -65,7 +74,7 @@ text = "POWER PONG
 
 FINAL MATCH"
 
-[node name="PlayerQ1" type="Label" parent="TextureRect"]
+[node name="PlayerQ1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 152.0
@@ -78,7 +87,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayerQ2" type="Label" parent="TextureRect"]
+[node name="PlayerQ2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 152.0
@@ -88,7 +97,7 @@ margin_bottom = -1351.0
 custom_fonts/font = SubResource( 2 )
 text = "BRAINAN"
 
-[node name="PlayerQ3" type="Label" parent="TextureRect"]
+[node name="PlayerQ3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 152.0
@@ -101,7 +110,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayerQ4" type="Label" parent="TextureRect"]
+[node name="PlayerQ4" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 152.0
@@ -114,7 +123,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayerQ5" type="Label" parent="TextureRect"]
+[node name="PlayerQ5" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 152.0
@@ -127,7 +136,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayerQ6" type="Label" parent="TextureRect"]
+[node name="PlayerQ6" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 152.0
@@ -137,7 +146,7 @@ margin_bottom = -551.0
 custom_fonts/font = SubResource( 2 )
 text = "BRAINAN"
 
-[node name="PlayerQ7" type="Label" parent="TextureRect"]
+[node name="PlayerQ7" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 152.0
@@ -150,7 +159,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayerQ8" type="Label" parent="TextureRect"]
+[node name="PlayerQ8" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 152.0
@@ -160,7 +169,7 @@ margin_bottom = -151.0
 custom_fonts/font = SubResource( 2 )
 text = "BRAINAN"
 
-[node name="ScoreQ1M1" type="Label" parent="TextureRect"]
+[node name="ScoreQ1M1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 712.0
@@ -174,7 +183,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ1M2" type="Label" parent="TextureRect"]
+[node name="ScoreQ1M2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 832.0
@@ -188,7 +197,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ1M3" type="Label" parent="TextureRect"]
+[node name="ScoreQ1M3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 952.0
@@ -202,7 +211,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ2M1" type="Label" parent="TextureRect"]
+[node name="ScoreQ2M1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 712.0
@@ -216,7 +225,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ2M2" type="Label" parent="TextureRect"]
+[node name="ScoreQ2M2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 832.0
@@ -230,7 +239,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ2M3" type="Label" parent="TextureRect"]
+[node name="ScoreQ2M3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 952.0
@@ -244,7 +253,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ3M1" type="Label" parent="TextureRect"]
+[node name="ScoreQ3M1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 712.0
@@ -258,7 +267,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ3M2" type="Label" parent="TextureRect"]
+[node name="ScoreQ3M2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 832.0
@@ -272,7 +281,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ3M3" type="Label" parent="TextureRect"]
+[node name="ScoreQ3M3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 952.0
@@ -286,7 +295,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ4M1" type="Label" parent="TextureRect"]
+[node name="ScoreQ4M1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 712.0
@@ -300,7 +309,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ4M2" type="Label" parent="TextureRect"]
+[node name="ScoreQ4M2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 832.0
@@ -314,7 +323,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ4M3" type="Label" parent="TextureRect"]
+[node name="ScoreQ4M3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 952.0
@@ -328,7 +337,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ5M1" type="Label" parent="TextureRect"]
+[node name="ScoreQ5M1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 712.0
@@ -342,7 +351,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ5M2" type="Label" parent="TextureRect"]
+[node name="ScoreQ5M2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 832.0
@@ -356,7 +365,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ5M3" type="Label" parent="TextureRect"]
+[node name="ScoreQ5M3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 952.0
@@ -370,7 +379,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ6M1" type="Label" parent="TextureRect"]
+[node name="ScoreQ6M1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 712.0
@@ -384,7 +393,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ6M2" type="Label" parent="TextureRect"]
+[node name="ScoreQ6M2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 832.0
@@ -398,7 +407,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ6M3" type="Label" parent="TextureRect"]
+[node name="ScoreQ6M3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 952.0
@@ -412,7 +421,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ7M1" type="Label" parent="TextureRect"]
+[node name="ScoreQ7M1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 712.0
@@ -426,7 +435,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ7M2" type="Label" parent="TextureRect"]
+[node name="ScoreQ7M2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 832.0
@@ -440,7 +449,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ7M3" type="Label" parent="TextureRect"]
+[node name="ScoreQ7M3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 952.0
@@ -454,7 +463,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ8M1" type="Label" parent="TextureRect"]
+[node name="ScoreQ8M1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 712.0
@@ -468,7 +477,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ8M2" type="Label" parent="TextureRect"]
+[node name="ScoreQ8M2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 832.0
@@ -482,7 +491,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreQ8M3" type="Label" parent="TextureRect"]
+[node name="ScoreQ8M3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 952.0
@@ -496,7 +505,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayerS1" type="Label" parent="TextureRect"]
+[node name="PlayerS1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1376.0
@@ -506,7 +515,7 @@ margin_bottom = -1351.0
 custom_fonts/font = SubResource( 2 )
 text = "BRAINAN"
 
-[node name="PlayerS2" type="Label" parent="TextureRect"]
+[node name="PlayerS2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1376.0
@@ -516,7 +525,7 @@ margin_bottom = -1151.0
 custom_fonts/font = SubResource( 2 )
 text = "BRAINAN"
 
-[node name="PlayerS3" type="Label" parent="TextureRect"]
+[node name="PlayerS3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1376.0
@@ -526,7 +535,7 @@ margin_bottom = -551.0
 custom_fonts/font = SubResource( 2 )
 text = "BRAINAN"
 
-[node name="PlayerS4" type="Label" parent="TextureRect"]
+[node name="PlayerS4" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1376.0
@@ -536,7 +545,7 @@ margin_bottom = -351.0
 custom_fonts/font = SubResource( 2 )
 text = "BRAINAN"
 
-[node name="ScoreS1M1" type="Label" parent="TextureRect"]
+[node name="ScoreS1M1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1936.0
@@ -550,7 +559,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreS1M2" type="Label" parent="TextureRect"]
+[node name="ScoreS1M2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2056.0
@@ -564,7 +573,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreS1M3" type="Label" parent="TextureRect"]
+[node name="ScoreS1M3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2176.0
@@ -578,7 +587,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreS2M1" type="Label" parent="TextureRect"]
+[node name="ScoreS2M1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1936.0
@@ -592,7 +601,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreS2M2" type="Label" parent="TextureRect"]
+[node name="ScoreS2M2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2056.0
@@ -606,7 +615,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreS2M3" type="Label" parent="TextureRect"]
+[node name="ScoreS2M3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2176.0
@@ -620,7 +629,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreS3M1" type="Label" parent="TextureRect"]
+[node name="ScoreS3M1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1936.0
@@ -634,7 +643,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreS3M2" type="Label" parent="TextureRect"]
+[node name="ScoreS3M2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2056.0
@@ -648,7 +657,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreS3M3" type="Label" parent="TextureRect"]
+[node name="ScoreS3M3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2176.0
@@ -662,7 +671,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreS4M1" type="Label" parent="TextureRect"]
+[node name="ScoreS4M1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1936.0
@@ -676,7 +685,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreS4M2" type="Label" parent="TextureRect"]
+[node name="ScoreS4M2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2056.0
@@ -690,7 +699,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreS4M3" type="Label" parent="TextureRect"]
+[node name="ScoreS4M3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2176.0
@@ -704,7 +713,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayerF1" type="Label" parent="TextureRect"]
+[node name="PlayerF1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2592.0
@@ -714,7 +723,7 @@ margin_bottom = -951.0
 custom_fonts/font = SubResource( 2 )
 text = "BRAINAN"
 
-[node name="PlayerF2" type="Label" parent="TextureRect"]
+[node name="PlayerF2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2592.0
@@ -724,7 +733,7 @@ margin_bottom = -751.0
 custom_fonts/font = SubResource( 2 )
 text = "BRAINAN"
 
-[node name="ScoreF1M1" type="Label" parent="TextureRect"]
+[node name="ScoreF1M1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3152.0
@@ -738,7 +747,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreF1M2" type="Label" parent="TextureRect"]
+[node name="ScoreF1M2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3272.0
@@ -752,7 +761,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreF1M3" type="Label" parent="TextureRect"]
+[node name="ScoreF1M3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3392.0
@@ -766,7 +775,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreF1M4" type="Label" parent="TextureRect"]
+[node name="ScoreF1M4" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3512.0
@@ -780,7 +789,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreF1M5" type="Label" parent="TextureRect"]
+[node name="ScoreF1M5" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3632.0
@@ -794,7 +803,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreF2M1" type="Label" parent="TextureRect"]
+[node name="ScoreF2M1" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3152.0
@@ -808,7 +817,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreF2M2" type="Label" parent="TextureRect"]
+[node name="ScoreF2M2" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3272.0
@@ -822,7 +831,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreF2M3" type="Label" parent="TextureRect"]
+[node name="ScoreF2M3" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3392.0
@@ -836,7 +845,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreF2M4" type="Label" parent="TextureRect"]
+[node name="ScoreF2M4" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3512.0
@@ -850,7 +859,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreF2M5" type="Label" parent="TextureRect"]
+[node name="ScoreF2M5" type="Label" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3632.0
@@ -864,7 +873,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RegionalCup" type="TextureRect" parent="TextureRect"]
+[node name="RegionalCup" type="TextureRect" parent="Data"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3760.0
@@ -874,7 +883,7 @@ margin_bottom = -600.0
 texture = ExtResource( 6 )
 expand = true
 
-[node name="NationalCup" type="TextureRect" parent="TextureRect"]
+[node name="NationalCup" type="TextureRect" parent="Data"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -885,7 +894,7 @@ margin_bottom = -600.0
 texture = ExtResource( 5 )
 expand = true
 
-[node name="WorldCup" type="TextureRect" parent="TextureRect"]
+[node name="WorldCup" type="TextureRect" parent="Data"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -896,7 +905,8 @@ margin_bottom = -600.0
 texture = ExtResource( 4 )
 expand = true
 
-[node name="TheChampionIs" type="Label" parent="TextureRect"]
+[node name="TheChampionIs" type="Label" parent="Data"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3776.0
@@ -914,7 +924,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Champion" type="Label" parent="TextureRect"]
+[node name="Champion" type="Label" parent="Data"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3776.0
@@ -924,6 +935,21 @@ margin_bottom = -647.0
 custom_fonts/font = SubResource( 2 )
 text = "BRAINAN"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayMatch" type="Button" parent="Data"]
+anchor_left = 0.25
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1729.0
+margin_right = -2160.0
+margin_bottom = -120.0
+theme = ExtResource( 8 )
+custom_fonts/font = SubResource( 3 )
+text = "PLAY NEXT MATCH"
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -67,4 +67,4 @@ func _on_MatchTimer_timeout():
 
 
 func end_game():
-	GameData.end_game(player_score, opponent_score)
+	GameData.end_match(player_score, opponent_score)
