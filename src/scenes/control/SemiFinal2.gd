@@ -115,3 +115,18 @@ func get_result(phase, order, match_order):
 	else:
 		order -=2
 		return quarter_final_2.get_result(phase, order, match_order)
+
+
+func set_result(phase, order, match_order, value):
+	if phase == "Semi":
+		while len(match_result) < match_order:
+			match_result.append({"result": [null, null], "winner": 0})
+			
+		match_result[match_order][order -1] = value
+
+	if order < 3:
+		quarter_final_1.get_result(phase, order, match_order, value)
+	
+	else:
+		order -=2
+		quarter_final_2.get_result(phase, order, match_order, value)

@@ -137,3 +137,26 @@ func get_result(phase, order, match_order):
 			
 		else:
 			return semi_final_1.get_result(phase, order, match_order)
+
+
+func set_result(phase, order, match_order, value):
+	if phase == "Final":
+		while len(match_result) < match_order:
+			match_result.append({"result": [null, null], "winner": 0})
+		
+		match_result[match_order]["result"][order -1] = value
+
+	if order < 3:
+		semi_final_1.set_result(phase, order, match_order, value)
+	
+	elif order > 4:
+		order -= 4
+		semi_final_2.set_result(phase, order, match_order, value)
+	
+	else:
+		if phase == "Semi":
+			order -= 2
+			semi_final_2.set_result(phase, order, match_order, value)
+			
+		else:
+			semi_final_1.set_result(phase, order, match_order, value)

@@ -58,5 +58,5 @@ func get_result(phase, order, match_order):
 	return final_match.get_result(phase, order, match_order)
 
 
-# func set_result(phase, order, match_order, value):
-# 	return final_match.set_result(phase, order, match_order)
+func set_result(phase, order, match_order, value):
+	return final_match.set_result(phase, order, match_order)

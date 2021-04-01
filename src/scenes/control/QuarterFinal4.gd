@@ -83,3 +83,10 @@ func get_result(phase, order, match_order):
 		
 	else:
 		return null
+
+
+func set_result(phase, order, match_order, value):
+	while len(match_result) < match_order:
+		match_result.append({"result": [null, null], "winner": 0})
+	
+	match_result[match_order]["result"][order -1] = value
