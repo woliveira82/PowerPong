@@ -12,6 +12,7 @@ func _ready():
 
 func set_opponent_label(opponent_name):
 	$Interface/OpponentName.text = opponent_name
+	$Interface/PlayerName.text = GameData.player_name
 
 
 func _count_and_play():

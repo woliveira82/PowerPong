@@ -27,7 +27,6 @@ func _set_playoff_cup(cup_type):
 func _set_player_names():
 	for q in [1, 2, 3, 4, 5, 6, 7, 8]:
 		var label_name = "PlayerQ%d" % q
-		print(current_cup.get_player("Quarter", q))
 		data.get_node(label_name).text = current_cup.get_player("Quarter", q)
 	
 	for q in [1, 2, 3, 4]:
@@ -44,7 +43,7 @@ func _set_player_scores():
 			var label_name = "ScoreQ%dM%d" % [q, m]
 			var attribute_name = "quarter_score_%d" % q
 			var result = current_cup.get_result("Quarter", q, m)
-			if not result:
+			if typeof(result) != TYPE_INT:
 				result = "-"
 			data.get_node(label_name).text = str(result)
 	
@@ -53,7 +52,7 @@ func _set_player_scores():
 			var label_name = "ScoreS%dM%d" % [q, m]
 			var attribute_name = "semi_score_%d" % q
 			var result = current_cup.get_result("Semi", q, m)
-			if not result:
+			if typeof(result) != TYPE_INT:
 				result = "-"
 				
 			data.get_node(label_name).text = str(result)
@@ -63,7 +62,7 @@ func _set_player_scores():
 			var label_name = "ScoreF%dM%d" % [q, m]
 			var attribute_name = "final_score_%d" % q
 			var result = current_cup.get_result("Final", q, m)
-			if not result:
+			if typeof(result) != TYPE_INT:
 				result = "-"
 				
 			data.get_node(label_name).text = str(result)

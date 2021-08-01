@@ -5,8 +5,13 @@ var _ball = null
 var _speed = 500
 var _tolerance = 10
 var _go_middle = false
-# const opponent_list = ["Doe", "Buba", "West", "Brainan", "Tight", "Sloth",
-# "skinny", "Jack"]
+
+
+func _ready():
+	_ball = get_parent().find_node("Ball")
+	_set_opponent(GameData.next_opponent_type)
+	_tolerance = [10, 50, 90][randi() % 3]
+
 
 func _set_opponent(type):
 	if not type:
@@ -15,12 +20,6 @@ func _set_opponent(type):
 	get_parent().set_opponent_label(type)
 	call("_set_" + type)
 	
-
-func _ready():
-	_ball = get_parent().find_node("Ball")
-	_set_opponent(GameData.next_opponent_type)
-	_tolerance = [10, 50, 90][randi() % 3]
-
 
 func _physics_process(delta):
 	move_and_slide(Vector2(_get_direction(_go_middle), 0) * _speed)

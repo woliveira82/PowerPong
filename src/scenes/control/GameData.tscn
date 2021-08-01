@@ -1,13 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/scripts/GameData.gd" type="Script" id=1]
 [ext_resource path="res://src/scripts/Championship.gd" type="Script" id=2]
-[ext_resource path="res://src/scenes/control/QuarterFinal4.gd" type="Script" id=3]
-[ext_resource path="res://src/scenes/control/FinalMatch.gd" type="Script" id=4]
-[ext_resource path="res://src/scenes/control/SemiFinal1.gd" type="Script" id=5]
-[ext_resource path="res://src/scenes/control/SemiFinal2.gd" type="Script" id=6]
-[ext_resource path="res://src/scenes/control/QuarterFinal2.gd" type="Script" id=7]
-[ext_resource path="res://src/scenes/control/QuarterFinal1.gd" type="Script" id=8]
+[ext_resource path="res://src/scenes/control/Match.gd" type="Script" id=3]
+[ext_resource path="res://src/scripts/FinalMatch.gd" type="Script" id=4]
+[ext_resource path="res://src/scripts/SemiFinal1.gd" type="Script" id=5]
+[ext_resource path="res://src/scripts/QuarterFinal1.gd" type="Script" id=8]
 
 [node name="GameData" type="Node"]
 script = ExtResource( 1 )
@@ -25,13 +23,16 @@ script = ExtResource( 5 )
 script = ExtResource( 8 )
 
 [node name="QuarterFinal2" type="Node" parent="Championship/FinalMatch/SemiFinal1"]
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="SemiFinal2" type="Node" parent="Championship/FinalMatch"]
-script = ExtResource( 6 )
+script = ExtResource( 5 )
 
 [node name="QuarterFinal1" type="Node" parent="Championship/FinalMatch/SemiFinal2"]
 script = ExtResource( 8 )
 
 [node name="QuarterFinal2" type="Node" parent="Championship/FinalMatch/SemiFinal2"]
+script = ExtResource( 8 )
+
+[node name="Match" type="Node" parent="."]
 script = ExtResource( 3 )

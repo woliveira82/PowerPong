@@ -3,11 +3,11 @@ extends Node
 
 var _competitor_1 = ""
 var _competitor_2 = ""
-var _c1_player = false
-var _c2_player = false
+var c1_player = false
+var c2_player = false
 var final_winner = null
+var final_winner_player = false
 var match_result = []
-const _match = {"result": [null, null], "winner": 0}
 
 var semi_final_1 = null
 var semi_final_2 = null
@@ -18,28 +18,58 @@ func _ready():
 	semi_final_2 = $SemiFinal2
 	
 	
-func run_match():
-	_check_winner()
-	if not final_winner:
-		if _c1_player:
-			GameData.next_opponent_type = _competitor_2
-			SceneDirector.change_to("res://src/scenes/game/GameField.tscn")
+func set_next_match(current_phase, current_round):
+	if current_phase != "Final":
+		semi_final_1.set_next_match(current_phase, current_round, 0)
+		semi_final_2.set_next_match(current_phase, current_round, 4)
+	
+	else:
+		_check_winner()
+		if not final_winner:
+			if c1_player:
+				GameData.next_match_order = len(match_result)
+				GameData.next_opponent_order = 2
+				GameData.next_opponent_type = _competitor_2
+			
+			elif c2_player:
+				GameData.next_match_order = len(match_result)
+				GameData.next_opponent_order = 1
+				GameData.next_opponent_type = _competitor_1
+			
+			else:
+				var m = len(match_result)
+				match_result.append({"result": [null, null], "winner": 0})
+				match_result[m]["result"][0] = randi() % 10
+				match_result[m]["result"][1] = randi() % 10
+				_check_match_winner(m)
 
-		elif _c2_player:
-			GameData.next_opponent_type = _competitor_1
-			SceneDirector.change_to("res://src/scenes/game/GameField.tscn")
 
-		else:
-			var m = len(match_result)
-			match_result[m] = _match
-			match_result[m]["result"][0] = randi() % 10
-			match_result[m]["result"][1] = randi() % 10
-			_check_match_winner(m)
+func check_results():
+	var winner_1 = semi_final_1.get_winner()
+	var winner_2 = semi_final_2.get_winner()
+	if not winner_1:
+		semi_final_1.check_results()
+	
+	else:
+		_competitor_1 = winner_1
+		if semi_final_1.final_winner_player:
+			c1_player = true
+	
+	if not winner_2:
+		semi_final_2.check_results()
+	
+	else:
+		_competitor_2 = winner_2
+		if semi_final_2.final_winner_player:
+			c2_player = true
 
 
 func _check_match_winner(m):
 	var c1 = match_result[m]["result"][0]
 	var c2 = match_result[m]["result"][1]
+	if not c1 or not c2:
+		return
+	
 	if c1 > c2:
 		match_result[m]["winner"] = 1
 	
@@ -50,6 +80,7 @@ func _check_match_winner(m):
 
 
 func _check_winner():
+	final_winner = null
 	var winner_1 = 0
 	var winner_2 = 0
 	for m in match_result:
@@ -59,14 +90,25 @@ func _check_winner():
 		elif m["winner"] == 2:
 			winner_2 += 1
 	
-	if winner_1 >= 2:
+	if winner_1 >= 3:
 		final_winner = _competitor_1
 	
-	elif winner_2 >= 2:
+	elif winner_2 >= 3:
 		final_winner = _competitor_2
 	
-	else:
-		final_winner = _competitor_1
+	elif len(match_result) >= 5:
+		if winner_1 > winner_2:
+			final_winner = _competitor_1
+	
+		elif winner_2 > winner_1:
+			final_winner = _competitor_2
+	
+		else:
+			final_winner = _competitor_1
+
+
+func get_winner():
+	return final_winner
 
 
 func get_player(phase, order):
@@ -94,11 +136,11 @@ func set_player(phase, order, value, player):
 		if order == 1:
 			_competitor_1 = value
 			if player:
-				_c1_player = true
+				c1_player = true
 		else:
 			_competitor_2 = value
 			if player:
-				_c2_player = true
+				c2_player = true
 	
 	if order < 3:
 		semi_final_1.set_player(phase, order, value, player)
@@ -119,7 +161,7 @@ func set_player(phase, order, value, player):
 func get_result(phase, order, match_order):
 	if phase == "Final":
 		if len(match_result) >= match_order:
-			return match_result[match_order]["result"][order -1]
+			return match_result[match_order -1]["result"][order -1]
 		else:
 			return null
 
@@ -141,10 +183,11 @@ func get_result(phase, order, match_order):
 
 func set_result(phase, order, match_order, value):
 	if phase == "Final":
-		while len(match_result) < match_order:
+		while len(match_result) <= match_order:
 			match_result.append({"result": [null, null], "winner": 0})
 		
 		match_result[match_order]["result"][order -1] = value
+		_check_match_winner(match_order)
 
 	if order < 3:
 		semi_final_1.set_result(phase, order, match_order, value)

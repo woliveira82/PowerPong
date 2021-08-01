@@ -7,7 +7,6 @@ var _c1_player = false
 var _c2_player = false
 var final_winner = null
 var match_result = []
-const _match = {"result": [null, null], "winner": 0}
 
 var quarter_final_1 = null
 var quarter_final_2 = null
@@ -18,28 +17,54 @@ func _ready():
 	quarter_final_2 = $QuarterFinal2
 	
 	
-func run_match():
-	_check_winner()
-	if not final_winner:
-		if _c1_player:
-			GameData.next_opponent_type = _competitor_2
-			SceneDirector.change_to("res://src/scenes/game/GameField.tscn")
+func set_next_match(current_phase, current_round, order):
+	if current_phase != "Semi":
+		quarter_final_1.set_next_match(current_round, order)
+		quarter_final_2.set_next_match(current_round, order + 2)
+	
+	else:
+		_check_winner()
+		if not final_winner:
+			if _c1_player:
+				GameData.next_match_order = len(match_result)
+				GameData.next_opponent_order = order + 2
+				GameData.next_opponent_type = _competitor_2
+			
+			elif _c2_player:
+				GameData.next_match_order = len(match_result)
+				GameData.next_opponent_order = order + 1
+				GameData.next_opponent_type = _competitor_1
 
-		elif _c2_player:
-			GameData.next_opponent_type = _competitor_1
-			SceneDirector.change_to("res://src/scenes/game/GameField.tscn")
+			else:
+				var m = len(match_result)
+				match_result.append({"result": [null, null], "winner": 0})
+				match_result[m]["result"][0] = randi() % 10
+				match_result[m]["result"][1] = randi() % 10
+				_check_match_winner(m)
 
-		else:
-			var m = len(match_result)
-			match_result[m] = _match
-			match_result[m]["result"][0] = randi() % 10
-			match_result[m]["result"][1] = randi() % 10
-			_check_match_winner(m)
+
+func check_results():
+	var winner_1 = quarter_final_1.get_winner()
+	var winner_2 = quarter_final_2.get_winner()
+	if not winner_1:
+		quarter_final_1.check_results()
+	
+	else:
+		_competitor_1 = winner_1
+	
+	if not winner_2:
+		quarter_final_2.check_results()
+	
+	else:
+		_competitor_2 = winner_2
 
 
 func _check_match_winner(m):
 	var c1 = match_result[m]["result"][0]
 	var c2 = match_result[m]["result"][1]
+	if not c1 or not c2:
+		return
+	
 	if c1 > c2:
 		match_result[m]["winner"] = 1
 	
@@ -50,6 +75,7 @@ func _check_match_winner(m):
 
 
 func _check_winner():
+	final_winner = null
 	var winner_1 = 0
 	var winner_2 = 0
 	for m in match_result:
@@ -65,8 +91,16 @@ func _check_winner():
 	elif winner_2 >= 2:
 		final_winner = _competitor_2
 	
-	else:
+	elif len(match_result) >= 3:
 		final_winner = _competitor_1
+
+
+func get_winner():
+	if not final_winner:
+		return null
+	
+	var competitor = "_competitor_%d" % final_winner
+	return get(competitor)
 
 
 func get_player(phase, order):
@@ -119,14 +153,15 @@ func get_result(phase, order, match_order):
 
 func set_result(phase, order, match_order, value):
 	if phase == "Semi":
-		while len(match_result) < match_order:
+		while len(match_result) <= match_order:
 			match_result.append({"result": [null, null], "winner": 0})
 			
 		match_result[match_order][order -1] = value
+		_check_match_winner(match_order)
 
 	if order < 3:
-		quarter_final_1.get_result(phase, order, match_order, value)
+		quarter_final_1.set_result(phase, order, match_order, value)
 	
 	else:
 		order -=2
-		quarter_final_2.get_result(phase, order, match_order, value)
+		quarter_final_2.set_result(phase, order, match_order, value)
