@@ -15,5 +15,4 @@ func _on_Options_pressed():
 
 
 func _on_Credits_pressed():
-	# Replace with function body.
-	pass
+	SceneDirector.change_to("res://src/scenes/control/Credits.tscn")

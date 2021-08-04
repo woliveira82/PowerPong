@@ -1,0 +1,204 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/images/badblock.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/digitalix.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/scripts/Credits.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "RollDown"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 17, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -3000 ), Vector2( 0, -3000 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 20 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "back_to_menu"
+} ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+font_data = ExtResource( 2 )
+
+[node name="Credits" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 3000.0
+rect_pivot_offset = Vector2( -1668.96, 960 )
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 1
+anims/RollDown = SubResource( 1 )
+
+[node name="GameBy" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.197
+margin_top = 270.0
+margin_bottom = -43.2401
+custom_fonts/font = SubResource( 2 )
+text = "A GAME BY"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 270.0
+margin_top = 463.0
+margin_right = -270.0
+margin_bottom = -3773.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameDesign" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1500.0
+margin_bottom = -355.0
+rect_pivot_offset = Vector2( -1662.97, -351.49 )
+custom_fonts/font = SubResource( 3 )
+text = "GAME DESIGN"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="GameDesign"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 64.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 4 )
+text = "Weiner E B Oliveira"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Code" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1900.0
+margin_bottom = 45.0
+rect_pivot_offset = Vector2( -1662.97, -351.49 )
+custom_fonts/font = SubResource( 3 )
+text = "CODE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Code"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 64.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 4 )
+text = "Weiner E B Oliveira"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicSound" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 2300.0
+margin_bottom = 445.0
+rect_pivot_offset = Vector2( -1662.97, -351.49 )
+custom_fonts/font = SubResource( 3 )
+text = "MUSIC AND SOUND"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="MusicSound"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 64.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 4 )
+text = "Weiner E B Oliveira"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArtAnimation" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 2700.0
+margin_bottom = 845.0
+rect_pivot_offset = Vector2( -1662.97, -351.49 )
+custom_fonts/font = SubResource( 3 )
+text = "ART AND ANIMATION"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="ArtAnimation"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 64.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 4 )
+text = "Weiner E B Oliveira"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ThankYou" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 3850.0
+margin_bottom = -893.0
+rect_pivot_offset = Vector2( -1662.97, -351.49 )
+custom_fonts/font = SubResource( 3 )
+text = "Yes, that was a joke.
+I made everything.
+
+THANK YOU
+FOR PLAYING"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
