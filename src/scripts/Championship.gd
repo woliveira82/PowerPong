@@ -1,6 +1,5 @@
 extends Node
 
-
 var _type = null
 var _current_round = 0
 var _current_phase = null

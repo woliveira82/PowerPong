@@ -1,14 +1,10 @@
 extends Node
 
-
-var next_opponent_type = null
-var next_opponent_order = null
-var next_match_order = null
 var player_name = "Player"
 var music_on = true
 var effects_on = true
 var _championship = null
-var _option_file_path = 'res://assets/options.json'
+var _option_file_path = "res://assets/options.json"
 
 
 func _ready():
@@ -17,7 +13,7 @@ func _ready():
 
 
 func save_options(pn, mo, eo):
-	player_name = pn if len(pn) > 0 else 'Player'
+	player_name = pn if len(pn) > 0 else "Player"
 	music_on = mo
 	effects_on = eo
 	_store_options(player_name, music_on, effects_on)
