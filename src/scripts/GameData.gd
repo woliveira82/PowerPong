@@ -1,6 +1,7 @@
 extends Node
 
 var player_name = "Player"
+var opponent_name = "Doe"
 var music_on = true
 var effects_on = true
 var _championship = null
@@ -47,7 +48,6 @@ func _load_options():
 func end_match(player_score, opponent_score):
 	if not _championship:
 		SceneDirector.change_to("res://src/scenes/control/MainMenu.tscn")
-	
 	else:
 		_championship.end_match(player_score, opponent_score)
 
@@ -55,3 +55,7 @@ func end_match(player_score, opponent_score):
 func get_championship():
 	_championship = $Championship
 	return _championship
+
+
+func _set_random_opponent():
+	opponent_name = $Championship._set_random_opponent()

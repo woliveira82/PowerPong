@@ -9,7 +9,7 @@ var _go_middle = false
 
 func _ready():
 	_ball = get_parent().find_node("Ball")
-	_set_opponent(GameData.next_opponent_type)
+	_set_opponent(GameData.opponent_name)
 	_tolerance = [10, 50, 90][randi() % 3]
 
 

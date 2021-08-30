@@ -1,46 +1,39 @@
 extends Node
 
+
 var _type = null
 var _current_round = 0
 var _current_phase = null
-var _player_position = 0
-var quarter_finals = []
-var semi_finals = []
-var final_match = null
-
-
-class Match:
-	pass
+var match_list = []
 
 
 func get_type():
 	if not _type:
 		_type = 'LOCAL'
-	
 	return _type
 
 
 func new_championship():
-
-		
+	var player_position = (randi() % 4) + 1
 	for n in range(1, 4):
-		var m = Match.new()
-		quarter_finals.append(m)
+		var palette_A = _set_random_opponent()
+		var palette_B = _set_random_opponent()
+		if player_position != n:
+			match_list.append($Match.new('Quarter Finals', n, palette_A, palette_B))
+		else:
+			if randf() > 0.5: 
+				match_list.append($Match.new('Quarter Finals', n, GameData.player_name , palette_B, 1))
+			else: 
+				match_list.append($Match.new('Quarter Finals', n, palette_A, GameData.player_name, 2))
 
 
-func set_random_opponent():
+func _set_random_opponent():
 	var opponent_list = ["Doe", "Buba", "West", "Brainan"]
 	if _type == "NATIONAL":
 		opponent_list = ["Buba", "West", "Brainan", "Tight", "Sloth", "Skinny"]
-	
 	elif _type == "WORLD":
 		opponent_list = ["Tight", "Sloth", "Skinny", "Jack"]
-	
 	return  opponent_list[randi() % opponent_list.size()]
-
-
-func set_next_match():
-	pass
 
 
 func end_match(player_score, opponent_score):

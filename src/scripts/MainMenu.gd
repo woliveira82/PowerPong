@@ -2,6 +2,7 @@ extends CanvasLayer
 
 
 func _on_FastMatch_pressed():
+	GameData._set_random_opponent()
 	SceneDirector.change_to("res://src/scenes/game/GameField.tscn")
 
 
