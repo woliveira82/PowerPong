@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dy1emf34rr7v4"]
 
-[ext_resource type="Texture2D" uid="uid://bc3bfwa5xsmf8" path="res://assets/images/RegionalCup.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://rdev03ymlycf" path="res://assets/images/RegionalCup.png" id="2"]
 [ext_resource type="Script" path="res://src/scripts/ChampionshipSplash.gd" id="3"]
-[ext_resource type="Texture2D" uid="uid://b8xxwx4f2b7nh" path="res://assets/images/WorldCup.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://tokn2j0kt3si" path="res://assets/images/NationalCup.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://djx0php26haj8" path="res://assets/images/WorldCup.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bdskheyenij7q" path="res://assets/images/NationalCup.png" id="5"]
 
 [sub_resource type="Animation" id="3"]
 resource_name = "3_s_exit"
