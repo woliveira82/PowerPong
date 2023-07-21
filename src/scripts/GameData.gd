@@ -26,19 +26,19 @@ func _store_options(player_name, music_on, effects_on):
 		'music_on': music_on,
 		'effects_on': effects_on,
 	}
-	var file = File.new()
-	file.open(_option_file_path, File.WRITE)
-	file.store_line(to_json(options))
+	var file = FileAccess.open(_option_file_path, FileAccess.WRITE)
+	file.store_line(JSON.new().stringify(options))
 	file.close()
 
 
 func _load_options():
-	var file = File.new()
-	if not file.file_exists(_option_file_path):
+	if FileAccess.file_exists(_option_file_path):
 		return
 	
-	file.open(_option_file_path, file.READ)
-	var options = parse_json(file.get_as_text())
+	var file = FileAccess.open(_option_file_path, FileAccess.READ)
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(file.get_as_text())
+	var options = test_json_conv.get_data()
 	file.close()
 	player_name = options['player_name']
 	music_on = options['music_on']

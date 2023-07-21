@@ -12,7 +12,7 @@ var palette_2_name = ''
 var palette_2_score = [null, null, null]
 
 
-func _init(level, order, palette_A, palette_B, player_palette=0):
+func _init(level,order,palette_A,palette_B,player_palette=0):
 	final_level = level
 	final_order = order
 	palette_1_name = palette_A

@@ -10,7 +10,7 @@ func _ready():
 
 
 func _process(delta):
-	rect_position = drag
+	position = drag
 
 
 func _input(event):
@@ -22,5 +22,5 @@ func _input(event):
 		elif drag.x > 0:
 			drag.x = 0
 		
-		if rect_position.x < -1080:
-			next_match.rect_position.x = -rect_position.x
+		if position.x < -1080:
+			next_match.position.x = -position.x

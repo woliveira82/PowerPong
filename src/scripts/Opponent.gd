@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 
 var _ball = null
@@ -8,7 +8,7 @@ var _go_middle = false
 
 
 func _ready():
-	_ball = get_parent().find_node("Ball")
+	_ball = get_parent().find_child("Ball")
 	_set_opponent(GameData.opponent_name)
 	_tolerance = [10, 50, 90][randi() % 3]
 
@@ -22,7 +22,8 @@ func _set_opponent(type):
 	
 
 func _physics_process(delta):
-	move_and_slide(Vector2(_get_direction(_go_middle), 0) * _speed)
+	set_velocity(Vector2(_get_direction(_go_middle), 0) * _speed)
+	move_and_slide()
 
 
 func _get_direction(_go_middle):
@@ -41,8 +42,8 @@ func _set_Doe():
 
 
 func _set_Buba():
-	$Sprite.scale.x = 10
-	$CollisionShape2D.shape.set("extents", Vector2(16, 160))
+	$Sprite2D.scale.x = 10
+	$CollisionShape2D.shape.set("size", Vector2(16, 160))
 
 
 func _set_West():
@@ -55,14 +56,14 @@ func _set_Brainan():
 
 func _set_Tight():
 	_speed = 600
-	$Sprite.scale.x = 10
-	$CollisionShape2D.shape.set("extents", Vector2(16, 160))
+	$Sprite2D.scale.x = 10
+	$CollisionShape2D.shape.set("size", Vector2(16, 160))
 
 
 func _set_Sloth():
 	_go_middle = true
-	$Sprite.scale.x = 10
-	$CollisionShape2D.shape.set("extents", Vector2(16, 160))
+	$Sprite2D.scale.x = 10
+	$CollisionShape2D.shape.set("size", Vector2(16, 160))
 
 
 func _set_Skinny():
@@ -73,5 +74,5 @@ func _set_Skinny():
 func _set_Jack():
 	_speed = 600
 	_go_middle = true
-	$Sprite.scale.x = 10
-	$CollisionShape2D.shape.set("extents", Vector2(16, 160))
+	$Sprite2D.scale.x = 10
+	$CollisionShape2D.shape.set("size", Vector2(16, 160))

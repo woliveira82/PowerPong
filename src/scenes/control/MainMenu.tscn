@@ -1,84 +1,58 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://bnr7jbm2kbxiu"]
 
-[ext_resource path="res://assets/images/PP.png" type="Texture" id=1]
-[ext_resource path="res://assets/fonts/digitalix.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://src/scripts/MainMenu.gd" type="Script" id=3]
-[ext_resource path="res://src/PowerPong.tres" type="Theme" id=4]
-
-[sub_resource type="DynamicFont" id=1]
-size = 64
-outline_size = 2
-outline_color = Color( 0.498039, 0.498039, 0.498039, 1 )
-font_data = ExtResource( 2 )
+[ext_resource type="Texture2D" uid="uid://v1qy4iw2pjhw" path="res://assets/images/PP.png" id="1"]
+[ext_resource type="Script" path="res://src/scripts/MainMenu.gd" id="3"]
+[ext_resource type="Theme" uid="uid://kx3eu63a4r6d" path="res://src/PowerPong.tres" id="4"]
 
 [node name="MainMenu" type="CanvasLayer"]
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = 0.00012207
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+offset_bottom = 0.00012207
+color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 12.0
-margin_top = 176.0
-margin_right = 12.0
-margin_bottom = 176.0
-texture = ExtResource( 1 )
-expand = true
+offset_left = 12.0
+offset_top = 176.0
+offset_right = 12.0
+offset_bottom = 176.0
+texture = ExtResource("1")
+expand_mode = 1
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 270.0
-margin_bottom = -150.0
-theme = ExtResource( 4 )
-custom_constants/separation = 32
+offset_top = 270.0
+offset_bottom = -150.0
+theme = ExtResource("4")
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="FastMatch" type="Button" parent="VBoxContainer"]
-margin_top = 92.0
-margin_right = 1080.0
-margin_bottom = 157.0
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
 text = "FAST MATCH"
 
 [node name="Championship" type="Button" parent="VBoxContainer"]
-margin_top = 189.0
-margin_right = 1080.0
-margin_bottom = 254.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+layout_mode = 2
 text = "CHAMPIONSHIP"
 
 [node name="Options" type="Button" parent="VBoxContainer"]
-margin_top = 286.0
-margin_right = 1080.0
-margin_bottom = 351.0
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
 text = "OPTIONS"
 
 [node name="Credits" type="Button" parent="VBoxContainer"]
-margin_top = 383.0
-margin_right = 1080.0
-margin_bottom = 448.0
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
 text = "CREDITS"
+
 [connection signal="pressed" from="VBoxContainer/FastMatch" to="." method="_on_FastMatch_pressed"]
 [connection signal="pressed" from="VBoxContainer/Championship" to="." method="_on_Championship_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_Options_pressed"]
