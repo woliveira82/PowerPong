@@ -9,4 +9,4 @@ func change_to(new_scene_name):
 
 
 func _new_scene():
-	get_tree().change_scene(scene_name)
+	get_tree().change_scene_to_file(scene_name)

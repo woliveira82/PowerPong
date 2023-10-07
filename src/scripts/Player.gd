@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 
 const speed = 400
@@ -12,4 +12,5 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("player_right"):
 		velocity.x += 1.0
 	
-	move_and_slide(velocity * speed)
+	set_velocity(velocity * speed)
+	move_and_slide()

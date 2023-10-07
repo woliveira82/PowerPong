@@ -158,7 +158,7 @@ func set_player(phase, order, value, player):
 			semi_final_1.set_player(phase, order, value, player)
 
 
-func get_result(phase, order, match_order):
+func get_data(phase, order, match_order):
 	if phase == "Final":
 		if len(match_result) >= match_order:
 			return match_result[match_order -1]["result"][order -1]
@@ -166,19 +166,19 @@ func get_result(phase, order, match_order):
 			return null
 
 	if order < 3:
-		return semi_final_1.get_result(phase, order, match_order)
+		return semi_final_1.get_data(phase, order, match_order)
 	
 	elif order > 4:
 		order -= 4
-		return semi_final_2.get_result(phase, order, match_order)
+		return semi_final_2.get_data(phase, order, match_order)
 	
 	else:
 		if phase == "Semi":
 			order -= 2
-			return semi_final_2.get_result(phase, order, match_order)
+			return semi_final_2.get_data(phase, order, match_order)
 			
 		else:
-			return semi_final_1.get_result(phase, order, match_order)
+			return semi_final_1.get_data(phase, order, match_order)
 
 
 func set_result(phase, order, match_order, value):
