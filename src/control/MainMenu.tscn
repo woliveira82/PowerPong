@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cbyxeivyraj88" path="res://assets/images/PP.png" id="1"]
 [ext_resource type="FontFile" uid="uid://du3421x6ajkbl" path="res://assets/fonts/digitalix.ttf" id="2"]
+[ext_resource type="Theme" uid="uid://cya5ponahvi3x" path="res://assets/PowerPong.tres" id="2_l8xym"]
 [ext_resource type="Script" path="res://src/control/MainMenu.gd" id="3"]
-[ext_resource type="Theme" uid="uid://cya5ponahvi3x" path="res://src/PowerPong.tres" id="4"]
 
 [sub_resource type="FontFile" id="1"]
 fallbacks = Array[Font]([ExtResource("2")])
@@ -30,7 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4")
+theme = ExtResource("2_l8xym")
 
 [node name="TopSpace" type="Control" parent="VBoxContainer"]
 layout_mode = 2

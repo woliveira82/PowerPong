@@ -1,52 +1,57 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://o7qiwyw3efgq"]
 
-[ext_resource path="res://src/scripts/SceneDirector.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://src/control/SceneDirector.gd" id="1_7sfg0"]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id="1"]
 resource_name = "fade"
 length = 2.0
 tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 1 ),
-"transitions": PackedFloat32Array( 1 ),
-"values": [ {
-"args": [  ],
-"method": "_new_scene"
-} ]
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_new_scene"
+}]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("ColorRect:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.5, 1.5, 2 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s6e3c"]
+_data = {
+"fade": SubResource("1")
 }
 
 [node name="SceneDirector" type="CanvasLayer"]
 layer = 10
 follow_viewport_enabled = true
-script = ExtResource( 1 )
+script = ExtResource("1_7sfg0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = 0.00012207
 mouse_filter = 2
-color = Color( 0.054902, 0.0235294, 0.0235294, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fade = SubResource( 1 )
+libraries = {
+"": SubResource("AnimationLibrary_s6e3c")
+}

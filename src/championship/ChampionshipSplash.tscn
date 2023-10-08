@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://dwg33hcpla7gh"]
 
 [ext_resource type="FontFile" uid="uid://du3421x6ajkbl" path="res://assets/fonts/digitalix.ttf" id="1"]
+[ext_resource type="Script" path="res://src/championship/ChampionshipSplash.gd" id="1_kyc6a"]
 [ext_resource type="Texture2D" uid="uid://dd0mv4pesrss8" path="res://assets/images/RegionalCup.png" id="2"]
-[ext_resource type="Script" path="res://src/scripts/ChampionshipSplash.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://c58ksuetrit2l" path="res://assets/images/WorldCup.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://5231ghv0cssl" path="res://assets/images/NationalCup.png" id="5"]
 
@@ -48,7 +48,7 @@ _data = {
 }
 
 [node name="ChampionshipSplash" type="CanvasLayer"]
-script = ExtResource("3")
+script = ExtResource("1_kyc6a")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

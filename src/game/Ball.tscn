@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://balnue6mkld"]
 
 [ext_resource type="Texture2D" uid="uid://b4s31o4qmkn80" path="res://assets/images/white.bmp" id="1"]
-[ext_resource type="Script" path="res://src/scripts/Ball.gd" id="2"]
+[ext_resource type="Script" path="res://src/game/Ball.gd" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 16)
