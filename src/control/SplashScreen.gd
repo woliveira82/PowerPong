@@ -7,4 +7,4 @@ func _ready():
 
 func _to_main_menu():
 	# SceneDirector.change_to("res://src/scenes/control/Playoffs.tscn")
-	SceneDirector.change_to("res://src/scenes/control/MainMenu.tscn")
+	SceneDirector.change_to("res://src/control/MainMenu.tscn")

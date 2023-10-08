@@ -17,8 +17,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-SceneDirector="*res://src/scenes/control/SceneDirector.tscn"
-GameData="*res://src/scenes/control/GameData.tscn"
+SceneDirector="*res://src/control/SceneDirector.tscn"
+GameData="*res://src/control/GameData.tscn"
 
 [display]
 
