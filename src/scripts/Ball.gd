@@ -3,7 +3,6 @@ extends CharacterBody2D
 
 const MAX_SPEED = 1500
 var speed = 0
-var velocity = Vector2.ZERO
 
 
 func _process(delta):

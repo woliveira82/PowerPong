@@ -1,105 +1,106 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=3 uid="uid://dwg33hcpla7gh"]
 
-[ext_resource path="res://assets/fonts/digitalix.ttf" type="FontFile" id=1]
-[ext_resource path="res://assets/images/RegionalCup.png" type="Texture2D" id=2]
-[ext_resource path="res://src/scripts/ChampionshipSplash.gd" type="Script" id=3]
-[ext_resource path="res://assets/images/WorldCup.png" type="Texture2D" id=4]
-[ext_resource path="res://assets/images/NationalCup.png" type="Texture2D" id=5]
+[ext_resource type="FontFile" uid="uid://du3421x6ajkbl" path="res://assets/fonts/digitalix.ttf" id="1"]
+[ext_resource type="Texture2D" uid="uid://dd0mv4pesrss8" path="res://assets/images/RegionalCup.png" id="2"]
+[ext_resource type="Script" path="res://src/scripts/ChampionshipSplash.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://c58ksuetrit2l" path="res://assets/images/WorldCup.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://5231ghv0cssl" path="res://assets/images/NationalCup.png" id="5"]
 
-[sub_resource type="FontFile" id=1]
-size = 64
-font_data = ExtResource( 1 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[sub_resource type="FontFile" id=2]
-size = 64
-font_data = ExtResource( 1 )
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id="3"]
 resource_name = "3_s_exit"
 length = 3.0
 tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 3 ),
-"transitions": PackedFloat32Array( 1 ),
-"values": [ {
-"args": [  ],
-"method": "start_championship"
-} ]
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_championship"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x1wc1"]
+_data = {
+"3_s_exit": SubResource("3")
 }
 
 [node name="ChampionshipSplash" type="CanvasLayer"]
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color(0, 0, 0, 1)
 
 [node name="Type" type="Label" parent="."]
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.5
-theme_override_fonts/font = SubResource( 1 )
+theme_override_fonts/font = SubResource("1")
 text = "REGIONAL"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RegionalCup" type="TextureRect" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 128.0
-texture = ExtResource( 2 )
-expand = true
+texture = ExtResource("2")
+expand_mode = 1
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="NationalCup" type="TextureRect" parent="."]
 visible = false
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 128.0
-texture = ExtResource( 5 )
-expand = true
+texture = ExtResource("5")
+expand_mode = 1
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="WorldCup" type="TextureRect" parent="."]
 visible = false
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 160.0
-texture = ExtResource( 4 )
-expand = true
+texture = ExtResource("4")
+expand_mode = 1
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Championship" type="Label" parent="."]
+anchors_preset = -1
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = SubResource( 2 )
+theme_override_fonts/font = SubResource("2")
 text = "CHAMPIONSHIP"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/3_s_exit = SubResource( 3 )
+libraries = {
+"": SubResource("AnimationLibrary_x1wc1")
+}

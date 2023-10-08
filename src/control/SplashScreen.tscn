@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://blnsxleyc5ugh"]
 
-[ext_resource type="Script" path="res://src/scripts/SplashScreen.gd" id="3"]
-[ext_resource type="Texture2D" uid="uid://88wl8ovjlfpg" path="res://assets/images/badblock.png" id="4"]
+[ext_resource type="Script" path="res://src/control/SplashScreen.gd" id="1_le2gr"]
+[ext_resource type="Texture2D" uid="uid://88wl8ovjlfpg" path="res://assets/images/badblock.png" id="2_ueomh"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "fade_in_out"
@@ -44,18 +44,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = 0.00012207
 color = Color(0, 0, 0, 1)
-script = ExtResource("3")
+script = ExtResource("1_le2gr")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 270.0
-offset_top = 480.0
-offset_right = -270.0
-offset_bottom = -756.0
-texture = ExtResource("4")
-expand_mode = 1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -57.0
+offset_right = 45.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("2_ueomh")
+stretch_mode = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

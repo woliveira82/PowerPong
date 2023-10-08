@@ -2,8 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://du3421x6ajkbl" path="res://assets/fonts/digitalix.ttf" id="1"]
 [ext_resource type="Texture2D" uid="uid://bmesuh2pdy8et" path="res://assets/images/dotline.png" id="2"]
-[ext_resource type="PackedScene" path="res://src/scenes/game/Player.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://src/scenes/game/Opponent.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bi4igf11y46mv" path="res://src/scenes/game/Player.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://bmi52i8c1lu0i" path="res://src/scenes/game/Opponent.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://balnue6mkld" path="res://src/scenes/game/Ball.tscn" id="5"]
 [ext_resource type="Script" path="res://src/scripts/GameField.gd" id="6"]
 [ext_resource type="Theme" uid="uid://cya5ponahvi3x" path="res://src/PowerPong.tres" id="7"]
