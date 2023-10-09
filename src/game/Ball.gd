@@ -1,30 +1,32 @@
 extends CharacterBody2D
 
 
-const MAX_SPEED = 1500
-var speed = 0
+const MAX_SPEED := 700
+const INITIAL_POSITION := Vector2(135.0, 240.0)
+const INITIAL_SPEED := 200
+var speed := 0
 
 
 func _process(delta):
-	var collision_info = move_and_collide(velocity * speed * delta)
-	if collision_info:
-		if collision_info.collider.name == "Wall":
-			velocity = velocity.bounce(collision_info.normal)
-			
+	var collision = move_and_collide(self.velocity * self.speed * delta)
+	if collision:
+		if collision.get_collider() is Wall:
+			self.velocity = self.velocity.bounce(collision.get_normal())
+
 		else:
-			var pallete_x = collision_info.collider.position.x
-			var new_x = (position.x - pallete_x) / 150
+			var pallete_x = collision.get_collider().position.x
+			var new_x = (self.position.x - pallete_x) / 64
 			var new_y = sqrt(1 - pow(new_x, 2))
 			if velocity.y > 0:
 				new_y = -new_y
 				
 			velocity = Vector2(new_x, new_y)
-			speed += 100 if speed < MAX_SPEED else 0
+			speed += 50 if speed < MAX_SPEED else 0
 
 
 func stop():
-	speed = 0
-	position = Vector2(540, 960)
+	self.speed = 0
+	self.position = INITIAL_POSITION
 
 
 func start():
@@ -32,5 +34,5 @@ func start():
 	var new_x = sqrt(1 - pow(new_y, 2))
 	new_x = new_x * [1, -1][randi() % 2]
 	new_y = new_y * [1, -1][randi() % 2]
-	speed = 500
+	self.speed = INITIAL_SPEED
 	velocity = Vector2(new_x, new_y)

@@ -1,16 +1,16 @@
 extends CharacterBody2D
 
 
-const speed = 400
+const _SPEED = 200
 
 
 func _physics_process(delta):
-	var velocity = Vector2.ZERO
+	var x_direction = 0.0
 	if Input.is_action_pressed("player_left"):
-		velocity.x -= 1.0
+		x_direction -= 1.0
 		
 	elif Input.is_action_pressed("player_right"):
-		velocity.x += 1.0
+		x_direction += 1.0
 	
-	set_velocity(velocity * speed)
+	self.velocity = Vector2(x_direction, 0.0) * self._SPEED
 	move_and_slide()

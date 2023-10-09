@@ -1,11 +1,13 @@
 extends Node
 
+@onready var _player := $AnimationPlayer
+
 var scene_name: String
 
 
 func change_to(new_scene_name):
 	scene_name = new_scene_name
-	$AnimationPlayer.play("fade")
+	self._player.play("fade")
 
 
 func _new_scene():
