@@ -12,16 +12,10 @@ var type_label = null
 func _ready():
 	var championship_name = GameData.get_championship().get_type()
 	championship_label.text = championship_name
-	
-	if championship_name == "NATIONAL":
-		regional_cup.visible = false
-		nationa_cup.visible = true
-		world_cup.visible = false
-		
-	elif championship_name == "WORLD":
-		regional_cup.visible = false
-		nationa_cup.visible = false
-		world_cup.visible = true
+
+	regional_cup.visible = championship_name == "REGIONAL"
+	nationa_cup.visible = championship_name == "NATIONAL"
+	world_cup.visible = championship_name == "WORLD"
 
 	player.play("3_s_exit")
 
