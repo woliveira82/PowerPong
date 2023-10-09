@@ -38,6 +38,6 @@ func _set_random_opponent():
 
 func end_match(player_score, opponent_score):
 	pass
-	SceneDirector.change_to("res://src/scenes/control/Playoffs.tscn")
+	SceneDirector.change_scene_to_playoffs()
 
 

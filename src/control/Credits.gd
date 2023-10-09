@@ -6,4 +6,4 @@ func _ready():
 
 
 func back_to_menu():
-	SceneDirector.change_to("res://src/control/MainMenu.tscn")
+	SceneDirector.change_scene_to_menu()

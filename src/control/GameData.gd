@@ -44,7 +44,7 @@ func _load_options():
 
 func end_match(player_score, opponent_score):
 	if not _championship:
-		SceneDirector.change_to("res://src/control/MainMenu.tscn")
+		SceneDirector.change_scene_to_menu()
 	else:
 		_championship.end_match(player_score, opponent_score)
 
