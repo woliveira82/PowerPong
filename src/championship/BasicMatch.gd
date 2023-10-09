@@ -106,7 +106,7 @@ func set_player(phase, order, value, player):
 			_c2_player = true
 
 
-func get_result(phase, order, match_order):
+func get_data(phase, order, match_order):
 	if len(match_result) >= match_order:
 		return match_result[match_order -1]["result"][order -1]
 		

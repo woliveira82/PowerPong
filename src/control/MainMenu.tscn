@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://buhyr0e2d6kf"]
+
+[ext_resource type="Texture2D" uid="uid://cbyxeivyraj88" path="res://assets/images/PP.png" id="1"]
+[ext_resource type="FontFile" uid="uid://du3421x6ajkbl" path="res://assets/fonts/digitalix.ttf" id="2"]
+[ext_resource type="Theme" uid="uid://cya5ponahvi3x" path="res://assets/PowerPong.tres" id="2_l8xym"]
+[ext_resource type="Script" path="res://src/control/MainMenu.gd" id="3"]
+
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("2")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 0.00012207
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_l8xym")
+
+[node name="TopSpace" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+texture = ExtResource("1")
+stretch_mode = 5
+
+[node name="MiddleSpace" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FastMatch" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
+text = "FAST MATCH"
+
+[node name="Championship" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
+disabled = true
+text = "CHAMPIONSHIP"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
+text = "OPTIONS"
+
+[node name="Credits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
+text = "CREDITS"
+
+[node name="BottonSpace" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="pressed" from="VBoxContainer/FastMatch" to="." method="_on_FastMatch_pressed"]
+[connection signal="pressed" from="VBoxContainer/Championship" to="." method="_on_Championship_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_Credits_pressed"]

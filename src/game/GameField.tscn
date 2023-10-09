@@ -1,0 +1,343 @@
+[gd_scene load_steps=22 format=3 uid="uid://t3vfn0oenp21"]
+
+[ext_resource type="FontFile" uid="uid://du3421x6ajkbl" path="res://assets/fonts/digitalix.ttf" id="1"]
+[ext_resource type="Texture2D" uid="uid://bmesuh2pdy8et" path="res://assets/images/dotline.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://bi4igf11y46mv" path="res://src/game/Player.tscn" id="3"]
+[ext_resource type="Script" path="res://src/game/wall.gd" id="3_p6ri5"]
+[ext_resource type="PackedScene" uid="uid://bmi52i8c1lu0i" path="res://src/game/Opponent.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://balnue6mkld" path="res://src/game/Ball.tscn" id="5"]
+[ext_resource type="Script" path="res://src/game/GameField.gd" id="6"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(32, 580)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(32, 580)
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(268, 32)
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(268, 32)
+
+[sub_resource type="FontFile" id="5"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="6"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="7"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="8"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="9"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="10"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="11"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_7ea2j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ResultPanel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ResultPanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="13"]
+resource_name = "end_game"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_game"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ResultPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ResultPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vakvj"]
+_data = {
+"RESET": SubResource("Animation_7ea2j"),
+"end_game": SubResource("13")
+}
+
+[node name="GameField" type="Node"]
+script = ExtResource("6")
+metadata/_edit_horizontal_guides_ = [480.0]
+metadata/_edit_vertical_guides_ = [270.0]
+
+[node name="Field" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="MidLine" type="Sprite2D" parent="Field"]
+texture_filter = 1
+position = Vector2(135, 240)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2")
+
+[node name="Wall" type="StaticBody2D" parent="Field"]
+script = ExtResource("3_p6ri5")
+
+[node name="LeftWall" type="CollisionShape2D" parent="Field/Wall"]
+position = Vector2(-16, 240)
+shape = SubResource("1")
+debug_color = Color(0.847059, 0, 0.909804, 0.419608)
+
+[node name="RightWall" type="CollisionShape2D" parent="Field/Wall"]
+position = Vector2(286, 240)
+shape = SubResource("2")
+debug_color = Color(0.847059, 0, 0.909804, 0.419608)
+
+[node name="OpponentGoal" type="Area2D" parent="Field"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Field/OpponentGoal"]
+position = Vector2(135, -34)
+shape = SubResource("3")
+
+[node name="PlayerGoal" type="Area2D" parent="Field"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Field/PlayerGoal"]
+position = Vector2(135, 514)
+shape = SubResource("4")
+
+[node name="Opponent" parent="." instance=ExtResource("4")]
+position = Vector2(135, 16)
+
+[node name="Player" parent="." instance=ExtResource("3")]
+position = Vector2(135, 464)
+
+[node name="Ball" parent="." instance=ExtResource("5")]
+position = Vector2(135, 240)
+
+[node name="Interface" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OpponentName" type="Label" parent="Interface"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.121569, 0.121569, 0.121569, 1)
+theme_override_fonts/font = SubResource("5")
+text = "Opponent"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="OpponentScore" type="Label" parent="Interface"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_bottom = -4.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("6")
+text = "0"
+vertical_alignment = 2
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerName" type="Label" parent="Interface"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_color = Color(0.121569, 0.121569, 0.121569, 1)
+theme_override_fonts/font = SubResource("7")
+text = "Player"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="PlayerScore" type="Label" parent="Interface"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("8")
+text = "0"
+uppercase = true
+
+[node name="TimerLabel" type="Label" parent="Interface"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_right = -4.0
+offset_bottom = -4.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("9")
+text = "90"
+horizontal_alignment = 2
+vertical_alignment = 2
+uppercase = true
+
+[node name="RestartLabel" type="Label" parent="Interface"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_bottom = -8.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = SubResource("10")
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="ResultPanel" type="Panel" parent="Interface"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0.705882)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Result" type="Label" parent="Interface/ResultPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("11")
+text = "YOU
+WON"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interface"]
+libraries = {
+"": SubResource("AnimationLibrary_vakvj")
+}
+
+[node name="BallTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="MatchTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Field/OpponentGoal" to="." method="_on_OpponentGoal_body_entered"]
+[connection signal="body_entered" from="Field/PlayerGoal" to="." method="_on_PlayerGoal_body_entered"]
+[connection signal="timeout" from="BallTimer" to="." method="_on_BallTimer_timeout"]
+[connection signal="timeout" from="MatchTimer" to="." method="_on_MatchTimer_timeout"]
