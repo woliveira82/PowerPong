@@ -47,58 +47,69 @@ _data = {
 "3_s_exit": SubResource("3")
 }
 
-[node name="ChampionshipSplash" type="CanvasLayer"]
-script = ExtResource("1_kyc6a")
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ChampionshipSplash" type="ColorRect"]
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
+script = ExtResource("1_kyc6a")
 
-[node name="Type" type="Label" parent="."]
-anchors_preset = -1
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpaceTop" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Type" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
 theme_override_fonts/font = SubResource("1")
 text = "REGIONAL"
 
-[node name="RegionalCup" type="TextureRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 128.0
+[node name="RegionalCup" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
 texture = ExtResource("2")
-expand_mode = 1
-stretch_mode = 6
+stretch_mode = 5
 
-[node name="NationalCup" type="TextureRect" parent="."]
+[node name="NationalCup" type="TextureRect" parent="VBoxContainer"]
 visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 128.0
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
 texture = ExtResource("5")
-expand_mode = 1
-stretch_mode = 6
+stretch_mode = 5
 
-[node name="WorldCup" type="TextureRect" parent="."]
+[node name="WorldCup" type="TextureRect" parent="VBoxContainer"]
 visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 160.0
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
 texture = ExtResource("4")
-expand_mode = 1
-stretch_mode = 6
+stretch_mode = 5
 
-[node name="Championship" type="Label" parent="."]
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Championship" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
 theme_override_fonts/font = SubResource("2")
 text = "CHAMPIONSHIP"
+
+[node name="SpaceBottom" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

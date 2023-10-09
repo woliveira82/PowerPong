@@ -1,26 +1,29 @@
-extends CanvasLayer
+extends ColorRect
 
 var type_label = null
-var regional_cup = null
-var national_cup = null
-var world_cup = null
+
+@onready var championship_label := $VBoxContainer/Type
+@onready var regional_cup := $VBoxContainer/RegionalCup
+@onready var nationa_cup := $VBoxContainer/NationalCup
+@onready var world_cup := $VBoxContainer/WorldCup
+@onready var player := $AnimationPlayer
 
 
 func _ready():
 	var championship_name = GameData.get_championship().get_type()
-	$Type.text = championship_name
+	championship_label.text = championship_name
 	
 	if championship_name == "NATIONAL":
-		$RegionalCup.visible = false
-		$NationalCup.visible = true
-		$WorldCup.visible = false
+		regional_cup.visible = false
+		nationa_cup.visible = true
+		world_cup.visible = false
 		
 	elif championship_name == "WORLD":
-		$RegionalCup.visible = false
-		$NationalCup.visible = false
-		$WorldCup.visible = true
+		regional_cup.visible = false
+		nationa_cup.visible = false
+		world_cup.visible = true
 
-	$AnimationPlayer.play("3_s_exit")
+	player.play("3_s_exit")
 
 func start_championship():
 	SceneDirector.change_scene_to_playoffs()
