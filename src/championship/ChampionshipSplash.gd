@@ -13,11 +13,12 @@ func _ready():
 	var championship_name = GameData.get_championship().get_type()
 	championship_label.text = championship_name
 
-	regional_cup.visible = championship_name == "REGIONAL"
+	regional_cup.visible = championship_name == "LOCAL"
 	nationa_cup.visible = championship_name == "NATIONAL"
 	world_cup.visible = championship_name == "WORLD"
 
 	player.play("3_s_exit")
+
 
 func start_championship():
 	SceneDirector.change_scene_to_playoffs()

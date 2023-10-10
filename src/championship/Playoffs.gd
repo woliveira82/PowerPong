@@ -1,45 +1,57 @@
-extends CanvasLayer
+extends ColorRect
 
+enum {BEGNNING, MIDDLE, END}
+
+var _panel_position := BEGNNING
+var _in_animation := false
 var current_cup = null
-var data = null
+
+@onready var _local_cup := $HBoxContainer/FinalMatch/LocalCup
+@onready var _national_cup := $HBoxContainer/FinalMatch/NationalCup
+@onready var _world_cup := $HBoxContainer/FinalMatch/WorldCup
+@onready var _player := $AnimationPlayer
 
 
 func _ready():
 	current_cup = GameData.get_championship()
-	data = $Data
 	_set_playoff_cup(current_cup.get_type())
-	_set_labels()
 
 
 func _set_playoff_cup(cup_type):
-	if cup_type == "NATIONAL":
-		data.get_node("RegionalCup").visible = false
-		data.get_node("NationalCup").visible = true
-		data.get_node("WorldCup").visible = false
-	elif cup_type == "WORLD":
-		data.get_node("RegionalCup").visible = false
-		data.get_node("NationalCup").visible = false
-		data.get_node("WorldCup").visible = true
+	_local_cup.visible = cup_type == "LOCAL"
+	_national_cup.visible = cup_type == "NATIONAL"
+	_world_cup.visible = cup_type == "WORLD"
 
 
-func _set_labels():
-	for m in current_cup.match_list:
-		if m:
-			var order = m.final_order
-			var fase = 'Q'
-			if m.final_level == 'Semi Finals':
-				fase = 'S'
-			elif m.final_level == 'Final Match':
-				fase = 'F'
-			
-			var label_name = 'Player%s%d' % [fase, order * 2]
-			data.get_node(label_name).text = m.palette_1_name
-			for i in m.palette_1_score:
-				var score_name = "Score%s%dM%d" % [fase, order * 2, i]
-				data.get_node(score_name).text = str(i)
-				
-			label_name = 'Player%s%d' % [fase, (order * 2) + 1]
-			data.get_node(label_name).text = m.palette_1_name
-			for i in m.palette_1_score:
-				var score_name = "Score%s%dM%d" % [fase, (order * 2) + 1, i]
-				data.get_node(score_name).text = str(i)
+func _input(event):
+	if Input.is_action_just_pressed("player_right") and not _in_animation:
+		if _panel_position == BEGNNING:
+			_player.play("beginning_to_middle")
+		elif _panel_position == MIDDLE:
+			_player.play("middle_to_end")
+		
+	elif Input.is_action_just_pressed("player_left") and not _in_animation:
+		if _panel_position == MIDDLE:
+			_player.play("middle_to_beginning")
+		elif _panel_position == END:
+			_player.play("end_to_middle")
+
+
+func animation_started():
+	_in_animation = true
+
+
+func animation_ended():
+	_in_animation = false
+
+
+func set_panel_to_beginning():
+	_panel_position = BEGNNING
+
+
+func set_panel_to_middle():
+	_panel_position = MIDDLE
+
+
+func set_panel_to_end():
+	_panel_position = END

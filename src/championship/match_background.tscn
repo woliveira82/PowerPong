@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://cvf1ch3yoh0jk"]
+
+[node name="MatchBackground" type="ColorRect"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+color = Color(0.12549, 0.12549, 0.0901961, 1)
+
+[node name="MatchContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerAContainer" type="HBoxContainer" parent="MatchContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerName" type="Label" parent="MatchContainer/PlayerAContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.0
+text = "JOE"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Score1" type="Label" parent="MatchContainer/PlayerAContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Score2" type="Label" parent="MatchContainer/PlayerAContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Score3" type="Label" parent="MatchContainer/PlayerAContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="PlayerAContainer2" type="HBoxContainer" parent="MatchContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerName" type="Label" parent="MatchContainer/PlayerAContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.0
+text = "JOE"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Score1" type="Label" parent="MatchContainer/PlayerAContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Score2" type="Label" parent="MatchContainer/PlayerAContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Score3" type="Label" parent="MatchContainer/PlayerAContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true

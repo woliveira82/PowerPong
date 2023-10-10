@@ -1,826 +1,328 @@
-[gd_scene load_steps=13 format=3 uid="uid://dhc0a7x2lrqt7"]
+[gd_scene load_steps=11 format=3 uid="uid://dhc0a7x2lrqt7"]
 
-[ext_resource type="FontFile" uid="uid://du3421x6ajkbl" path="res://assets/fonts/digitalix.ttf" id="1"]
-[ext_resource type="Texture2D" uid="uid://boymvafsbwlgw" path="res://assets/images/playoffs.png" id="2"]
 [ext_resource type="Script" path="res://src/championship/Playoffs.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://c58ksuetrit2l" path="res://assets/images/WorldCup.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://5231ghv0cssl" path="res://assets/images/NationalCup.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://dd0mv4pesrss8" path="res://assets/images/RegionalCup.png" id="6"]
-[ext_resource type="Script" path="res://src/championship/TextureRect.gd" id="7"]
-[ext_resource type="Theme" uid="uid://cya5ponahvi3x" path="res://assets/PowerPong.tres" id="8"]
-[ext_resource type="Script" path="res://src/championship/PlayMatch.gd" id="9"]
+[ext_resource type="PackedScene" uid="uid://cvf1ch3yoh0jk" path="res://src/championship/match_background.tscn" id="10_ps6bj"]
 
-[sub_resource type="FontFile" id="1"]
-fallbacks = Array[Font]([ExtResource("1")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/glyphs/0/advance = Vector2(0, 0)
-cache/0/16/0/glyphs/0/offset = Vector2(0, 0)
-cache/0/16/0/glyphs/0/size = Vector2(0, 0)
-cache/0/16/0/glyphs/0/uv_rect = Rect2(0, 0, 0, 0)
-cache/0/16/0/glyphs/0/texture_idx = -1
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+[sub_resource type="Animation" id="Animation_gsw5n"]
+resource_name = "beginning_to_middle"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-270, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"animation_started"
+}, {
+"args": [],
+"method": &"set_panel_to_middle"
+}, {
+"args": [],
+"method": &"animation_ended"
+}]
+}
 
-[sub_resource type="FontFile" id="2"]
-fallbacks = Array[Font]([ExtResource("1")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+[sub_resource type="Animation" id="Animation_3bqya"]
+resource_name = "middle_to_beginning"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-270, 0), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"animation_started"
+}, {
+"args": [],
+"method": &"set_panel_to_beginning"
+}, {
+"args": [],
+"method": &"animation_ended"
+}]
+}
 
-[sub_resource type="FontFile" id="3"]
-fallbacks = Array[Font]([ExtResource("1")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+[sub_resource type="Animation" id="Animation_0bwjn"]
+resource_name = "middle_to_end"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-270, 0), Vector2(-540, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"animation_started"
+}, {
+"args": [],
+"method": &"set_panel_to_end"
+}, {
+"args": [],
+"method": &"animation_ended"
+}]
+}
 
-[node name="Playoffs" type="CanvasLayer"]
-script = ExtResource("3")
+[sub_resource type="Animation" id="Animation_1b6br"]
+resource_name = "end_to_middle"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-540, 0), Vector2(-270, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"animation_started"
+}, {
+"args": [],
+"method": &"set_panel_to_middle"
+}, {
+"args": [],
+"method": &"animation_ended"
+}]
+}
 
-[node name="Data" type="TextureRect" parent="."]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ohn5f"]
+_data = {
+"beginning_to_middle": SubResource("Animation_gsw5n"),
+"end_to_middle": SubResource("Animation_1b6br"),
+"middle_to_beginning": SubResource("Animation_3bqya"),
+"middle_to_end": SubResource("Animation_0bwjn")
+}
+
+[node name="Playoffs" type="ColorRect"]
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 3240.0
-texture = ExtResource("2")
-stretch_mode = 5
-script = ExtResource("7")
+offset_right = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3")
 
-[node name="QuarterFinals" type="Label" parent="Data"]
-layout_mode = 0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 136.0
-offset_top = 136.0
-offset_right = -3293.0
-offset_bottom = -1719.0
-theme_override_fonts/font = SubResource("1")
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="LeftLine1" type="Line2D" parent="HBoxContainer"]
+points = PackedVector2Array(266, 159, 245, 124)
+width = 4.0
+
+[node name="LeftLine2" type="Line2D" parent="HBoxContainer"]
+points = PackedVector2Array(267, 193, 245, 219)
+width = 4.0
+
+[node name="LeftLine3" type="Line2D" parent="HBoxContainer"]
+points = PackedVector2Array(266, 323, 246, 313)
+width = 4.0
+
+[node name="LeftLine4" type="Line2D" parent="HBoxContainer"]
+points = PackedVector2Array(266, 357, 246, 410)
+width = 4.0
+
+[node name="RightLine1" type="Line2D" parent="HBoxContainer"]
+points = PackedVector2Array(510, 176, 532, 241)
+width = 4.0
+
+[node name="RightLine2" type="Line2D" parent="HBoxContainer"]
+points = PackedVector2Array(509, 341, 532, 275)
+width = 4.0
+
+[node name="QuarterFinals" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 11.0
+theme_override_constants/separation = 16
+
+[node name="StageLabel" type="Label" parent="HBoxContainer/QuarterFinals"]
+layout_mode = 2
+size_flags_vertical = 3
 text = "QUARTER-FINALS"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
-[node name="SemiFinals" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1472.0
-offset_top = 336.0
-offset_right = -2218.0
-offset_bottom = -1519.0
-theme_override_fonts/font = SubResource("1")
+[node name="Space" type="Control" parent="HBoxContainer/QuarterFinals"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MatchBackground1" parent="HBoxContainer/QuarterFinals" instance=ExtResource("10_ps6bj")]
+layout_mode = 2
+
+[node name="MatchBackground2" parent="HBoxContainer/QuarterFinals" instance=ExtResource("10_ps6bj")]
+layout_mode = 2
+
+[node name="MatchBackground3" parent="HBoxContainer/QuarterFinals" instance=ExtResource("10_ps6bj")]
+layout_mode = 2
+
+[node name="MatchBackground4" parent="HBoxContainer/QuarterFinals" instance=ExtResource("10_ps6bj")]
+layout_mode = 2
+
+[node name="SemiFinals" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 11.0
+theme_override_constants/separation = 16
+
+[node name="StageLabel" type="Label" parent="HBoxContainer/SemiFinals"]
+layout_mode = 2
+size_flags_vertical = 3
 text = "SEMI-FINALS"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
-[node name="FinalMatch" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2808.0
-offset_top = 600.0
-offset_right = -837.0
-offset_bottom = -1119.0
-theme_override_fonts/font = SubResource("1")
-text = "POWER PONG
+[node name="Space" type="Control" parent="HBoxContainer/SemiFinals"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
 
-FINAL MATCH"
+[node name="MatchBackground1" parent="HBoxContainer/SemiFinals" instance=ExtResource("10_ps6bj")]
+layout_mode = 2
 
-[node name="PlayerQ1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 152.0
-offset_top = 312.0
-offset_right = -3672.0
-offset_bottom = -1551.0
-theme_override_fonts/font = SubResource("2")
-text = "BRAINAN"
+[node name="SpaceMiddle" type="Control" parent="HBoxContainer/SemiFinals"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 
-[node name="PlayerQ2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 152.0
-offset_top = 512.0
-offset_right = -3672.0
-offset_bottom = -1351.0
-theme_override_fonts/font = SubResource("2")
-text = "BRAINAN"
+[node name="MatchBackground2" parent="HBoxContainer/SemiFinals" instance=ExtResource("10_ps6bj")]
+layout_mode = 2
 
-[node name="PlayerQ3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 152.0
-offset_top = 712.0
-offset_right = -3672.0
-offset_bottom = -1151.0
-theme_override_fonts/font = SubResource("2")
-text = "BRAINAN"
+[node name="SpaceBottom" type="Control" parent="HBoxContainer/SemiFinals"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 
-[node name="PlayerQ4" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 152.0
-offset_top = 912.0
-offset_right = -3672.0
-offset_bottom = -951.0
-theme_override_fonts/font = SubResource("2")
-text = "BRAINAN"
+[node name="FinalMatch" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 11.0
+theme_override_constants/separation = 16
 
-[node name="PlayerQ5" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 152.0
-offset_top = 1112.0
-offset_right = -3672.0
-offset_bottom = -751.0
-theme_override_fonts/font = SubResource("2")
-text = "BRAINAN"
+[node name="StageLabel" type="Label" parent="HBoxContainer/FinalMatch"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "FINALS"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
-[node name="PlayerQ6" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 152.0
-offset_top = 1312.0
-offset_right = -3672.0
-offset_bottom = -551.0
-theme_override_fonts/font = SubResource("2")
-text = "BRAINAN"
+[node name="Space" type="Control" parent="HBoxContainer/FinalMatch"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
 
-[node name="PlayerQ7" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 152.0
-offset_top = 1512.0
-offset_right = -3672.0
-offset_bottom = -351.0
-theme_override_fonts/font = SubResource("2")
-text = "BRAINAN"
-
-[node name="PlayerQ8" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 152.0
-offset_top = 1712.0
-offset_right = -3672.0
-offset_bottom = -151.0
-theme_override_fonts/font = SubResource("2")
-text = "BRAINAN"
-
-[node name="ScoreQ1M1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 712.0
-offset_top = 312.0
-offset_right = -3536.0
-offset_bottom = -1551.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ1M2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 832.0
-offset_top = 312.0
-offset_right = -3416.0
-offset_bottom = -1551.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ1M3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 952.0
-offset_top = 312.0
-offset_right = -3296.0
-offset_bottom = -1551.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ2M1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 712.0
-offset_top = 512.0
-offset_right = -3536.0
-offset_bottom = -1351.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ2M2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 832.0
-offset_top = 512.0
-offset_right = -3416.0
-offset_bottom = -1351.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ2M3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 952.0
-offset_top = 512.0
-offset_right = -3296.0
-offset_bottom = -1351.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ3M1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 712.0
-offset_top = 712.0
-offset_right = -3536.0
-offset_bottom = -1151.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ3M2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 832.0
-offset_top = 712.0
-offset_right = -3416.0
-offset_bottom = -1151.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ3M3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 952.0
-offset_top = 712.0
-offset_right = -3296.0
-offset_bottom = -1151.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ4M1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 712.0
-offset_top = 912.0
-offset_right = -3536.0
-offset_bottom = -951.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ4M2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 832.0
-offset_top = 912.0
-offset_right = -3416.0
-offset_bottom = -951.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ4M3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 952.0
-offset_top = 912.0
-offset_right = -3296.0
-offset_bottom = -951.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ5M1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 712.0
-offset_top = 1112.0
-offset_right = -3536.0
-offset_bottom = -751.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ5M2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 832.0
-offset_top = 1112.0
-offset_right = -3416.0
-offset_bottom = -751.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ5M3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 952.0
-offset_top = 1112.0
-offset_right = -3296.0
-offset_bottom = -751.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ6M1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 712.0
-offset_top = 1312.0
-offset_right = -3536.0
-offset_bottom = -551.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ6M2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 832.0
-offset_top = 1312.0
-offset_right = -3416.0
-offset_bottom = -551.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ6M3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 952.0
-offset_top = 1312.0
-offset_right = -3296.0
-offset_bottom = -551.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ7M1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 712.0
-offset_top = 1512.0
-offset_right = -3536.0
-offset_bottom = -351.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ7M2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 832.0
-offset_top = 1512.0
-offset_right = -3416.0
-offset_bottom = -351.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ7M3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 952.0
-offset_top = 1512.0
-offset_right = -3296.0
-offset_bottom = -351.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ8M1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 712.0
-offset_top = 1712.0
-offset_right = -3536.0
-offset_bottom = -151.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ8M2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 832.0
-offset_top = 1712.0
-offset_right = -3416.0
-offset_bottom = -151.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreQ8M3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 952.0
-offset_top = 1712.0
-offset_right = -3296.0
-offset_bottom = -151.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="PlayerS1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1376.0
-offset_top = 512.0
-offset_right = -2448.0
-offset_bottom = -1351.0
-theme_override_fonts/font = SubResource("2")
-text = "BRAINAN"
-
-[node name="PlayerS2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1376.0
-offset_top = 712.0
-offset_right = -2448.0
-offset_bottom = -1151.0
-theme_override_fonts/font = SubResource("2")
-text = "BRAINAN"
-
-[node name="PlayerS3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1376.0
-offset_top = 1312.0
-offset_right = -2448.0
-offset_bottom = -551.0
-theme_override_fonts/font = SubResource("2")
-text = "BRAINAN"
-
-[node name="PlayerS4" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1376.0
-offset_top = 1512.0
-offset_right = -2448.0
-offset_bottom = -351.0
-theme_override_fonts/font = SubResource("2")
-text = "BRAINAN"
-
-[node name="ScoreS1M1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1936.0
-offset_top = 512.0
-offset_right = -2312.0
-offset_bottom = -1351.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreS1M2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2056.0
-offset_top = 512.0
-offset_right = -2192.0
-offset_bottom = -1351.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreS1M3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2176.0
-offset_top = 512.0
-offset_right = -2072.0
-offset_bottom = -1351.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreS2M1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1936.0
-offset_top = 712.0
-offset_right = -2312.0
-offset_bottom = -1151.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreS2M2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2056.0
-offset_top = 712.0
-offset_right = -2192.0
-offset_bottom = -1151.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreS2M3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2176.0
-offset_top = 712.0
-offset_right = -2072.0
-offset_bottom = -1151.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreS3M1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1936.0
-offset_top = 1312.0
-offset_right = -2312.0
-offset_bottom = -551.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreS3M2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2056.0
-offset_top = 1312.0
-offset_right = -2192.0
-offset_bottom = -551.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreS3M3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2176.0
-offset_top = 1312.0
-offset_right = -2072.0
-offset_bottom = -551.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreS4M1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1936.0
-offset_top = 1512.0
-offset_right = -2312.0
-offset_bottom = -351.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreS4M2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2056.0
-offset_top = 1512.0
-offset_right = -2192.0
-offset_bottom = -351.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreS4M3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2176.0
-offset_top = 1512.0
-offset_right = -2072.0
-offset_bottom = -351.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="PlayerF1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2592.0
-offset_top = 912.0
-offset_right = -1232.0
-offset_bottom = -951.0
-theme_override_fonts/font = SubResource("2")
-text = "BRAINAN"
-
-[node name="PlayerF2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2592.0
-offset_top = 1112.0
-offset_right = -1232.0
-offset_bottom = -751.0
-theme_override_fonts/font = SubResource("2")
-text = "BRAINAN"
-
-[node name="ScoreF1M1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3152.0
-offset_top = 912.0
-offset_right = -1096.0
-offset_bottom = -951.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreF1M2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3272.0
-offset_top = 912.0
-offset_right = -976.0
-offset_bottom = -951.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreF1M3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3392.0
-offset_top = 912.0
-offset_right = -856.0
-offset_bottom = -951.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreF1M4" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3512.0
-offset_top = 912.0
-offset_right = -736.0
-offset_bottom = -951.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreF1M5" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3632.0
-offset_top = 912.0
-offset_right = -616.0
-offset_bottom = -951.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreF2M1" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3152.0
-offset_top = 1112.0
-offset_right = -1096.0
-offset_bottom = -751.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreF2M2" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3272.0
-offset_top = 1112.0
-offset_right = -976.0
-offset_bottom = -751.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreF2M3" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3392.0
-offset_top = 1112.0
-offset_right = -856.0
-offset_bottom = -751.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreF2M4" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3512.0
-offset_top = 1112.0
-offset_right = -736.0
-offset_bottom = -751.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="ScoreF2M5" type="Label" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3632.0
-offset_top = 1112.0
-offset_right = -616.0
-offset_bottom = -751.0
-theme_override_fonts/font = SubResource("2")
-text = "0"
-
-[node name="RegionalCup" type="TextureRect" parent="Data"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3760.0
-offset_top = 808.0
-offset_right = -48.0
-offset_bottom = -600.0
+[node name="LocalCup" type="TextureRect" parent="HBoxContainer/FinalMatch"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
 texture = ExtResource("6")
-expand_mode = 1
+stretch_mode = 5
 
-[node name="NationalCup" type="TextureRect" parent="Data"]
+[node name="NationalCup" type="TextureRect" parent="HBoxContainer/FinalMatch"]
 visible = false
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3760.0
-offset_top = 808.0
-offset_right = -48.0
-offset_bottom = -600.0
+layout_mode = 2
 texture = ExtResource("5")
-expand_mode = 1
+stretch_mode = 5
 
-[node name="WorldCup" type="TextureRect" parent="Data"]
+[node name="WorldCup" type="TextureRect" parent="HBoxContainer/FinalMatch"]
 visible = false
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3760.0
-offset_top = 808.0
-offset_right = -48.0
-offset_bottom = -600.0
+layout_mode = 2
 texture = ExtResource("4")
-expand_mode = 1
+stretch_mode = 5
 
-[node name="TheChampionIs" type="Label" parent="Data"]
-visible = false
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3776.0
-offset_top = 544.0
-offset_right = -48.0
-offset_bottom = -1079.0
-theme_override_fonts/font = SubResource("2")
-text = "THE
+[node name="MatchBackground1" parent="HBoxContainer/FinalMatch" instance=ExtResource("10_ps6bj")]
+layout_mode = 2
 
-CHAMPION
+[node name="Space2" type="Control" parent="HBoxContainer/FinalMatch"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.5
 
-IS"
+[node name="SpaceBottom" type="Control" parent="HBoxContainer/FinalMatch"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 
-[node name="Champion" type="Label" parent="Data"]
-visible = false
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3776.0
-offset_top = 1216.0
-offset_right = -48.0
-offset_bottom = -647.0
-theme_override_fonts/font = SubResource("2")
-text = "BRAINAN"
-
-[node name="PlayMatch" type="Button" parent="Data"]
-layout_mode = 0
-anchor_left = 0.25
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 1729.0
-offset_right = -2160.0
-offset_bottom = -120.0
-theme = ExtResource("8")
-theme_override_fonts/font = SubResource("3")
-text = "PLAY NEXT MATCH"
-script = ExtResource("9")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ohn5f")
+}
