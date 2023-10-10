@@ -13,23 +13,28 @@ var opponent_score := 0
 @onready var _player := $Interface/AnimationPlayer
 @onready var _player_name := $Interface/PlayerName
 @onready var _player_score := $Interface/PlayerScore
+
 @onready var _ball := $Ball
+@onready var _opponent := $Opponent
 
 @onready var _result_panel := $Interface/ResultPanel
 @onready var _result_label := $Interface/ResultPanel/Result
 
 
 func _ready():
+	set_opponent()
+	_player_name.text = GameData.player_name
 	_match_timer.start()
 	_match_timer.paused = true
 	_result_panel.visible = false
 	_count_and_play()
 
 
-func set_opponent_label(opponent_name):
-	if _opponent_name:
-		_opponent_name.text = opponent_name
-		_player_name.text = GameData.player_name
+func set_opponent():
+	var default_type = "DOE"
+	_opponent.set("ball", _ball)
+	_opponent.set_opponent(default_type)
+	_opponent_name.text = default_type
 
 
 func _count_and_play():
