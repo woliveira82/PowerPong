@@ -17,8 +17,10 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Signals="*res://src/data/signals.gd"
 SceneDirector="*res://src/control/SceneDirector.tscn"
 GameData="*res://src/control/GameData.tscn"
+MatchData="*res://src/data/match_data.gd"
 
 [display]
 

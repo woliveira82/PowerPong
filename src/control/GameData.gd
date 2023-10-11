@@ -9,6 +9,7 @@ var _option_file_path = "res://assets/options.json"
 
 
 func _ready():
+	Signals.match_ended.connect(_on_match_ended)
 	randomize()
 	_load_options()
 
@@ -42,7 +43,7 @@ func _load_options():
 	effects_on = options['effects_on']
 
 
-func end_match(player_score, opponent_score):
+func _on_match_ended(player_score, opponent_score):
 	if not _championship:
 		SceneDirector.change_scene_to_menu()
 	else:

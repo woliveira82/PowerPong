@@ -22,19 +22,13 @@ var opponent_score := 0
 
 
 func _ready():
-	set_opponent()
+	Signals.match_data_setted.connect(_on_match_data_setted)
+	Signals.field_loaded.emit()
 	_player_name.text = GameData.player_name
 	_match_timer.start()
 	_match_timer.paused = true
 	_result_panel.visible = false
 	_count_and_play()
-
-
-func set_opponent():
-	var default_type = "DOE"
-	_opponent.set("ball", _ball)
-	_opponent.set_opponent(default_type)
-	_opponent_name.text = default_type
 
 
 func _count_and_play():
@@ -48,12 +42,12 @@ func _process(delta):
 	_restart_label.text = str(int(_ball_timer.time_left) + 1)
 
 
-func _on_PlayerGoal_body_entered(body):
+func _on_PlayerGoal_body_entered(_body):
 	_score_from_player(false)
 	_count_and_play()
 
 
-func _on_OpponentGoal_body_entered(body):
+func _on_OpponentGoal_body_entered(_body):
 	_score_from_player(true)
 	_count_and_play()
 
@@ -96,4 +90,10 @@ func _on_MatchTimer_timeout():
 
 
 func end_game():
-	GameData.end_match(player_score, opponent_score)
+	Signals.match_ended.emit(player_score, opponent_score)
+
+
+func _on_match_data_setted(opponent_name):
+	_opponent.set("ball", _ball)
+	_opponent.set_opponent(opponent_name)
+	_opponent_name.text = opponent_name
