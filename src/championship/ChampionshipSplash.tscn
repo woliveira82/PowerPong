@@ -76,7 +76,7 @@ size_flags_vertical = 6
 theme_override_fonts/font = SubResource("1")
 text = "REGIONAL"
 
-[node name="RegionalCup" type="TextureRect" parent="VBoxContainer"]
+[node name="LocalCup" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0

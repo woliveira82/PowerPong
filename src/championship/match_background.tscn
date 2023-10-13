@@ -39,7 +39,7 @@ uppercase = true
 [node name="Score1" type="Label" parent="MatchContainer/PlayerAContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0"
+text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -47,7 +47,7 @@ uppercase = true
 [node name="Score2" type="Label" parent="MatchContainer/PlayerAContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0"
+text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -55,7 +55,7 @@ uppercase = true
 [node name="Score3" type="Label" parent="MatchContainer/PlayerAContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0"
+text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -75,7 +75,7 @@ uppercase = true
 [node name="Score1" type="Label" parent="MatchContainer/PlayerAContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0"
+text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -83,7 +83,7 @@ uppercase = true
 [node name="Score2" type="Label" parent="MatchContainer/PlayerAContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0"
+text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -91,7 +91,7 @@ uppercase = true
 [node name="Score3" type="Label" parent="MatchContainer/PlayerAContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0"
+text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true

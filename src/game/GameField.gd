@@ -37,7 +37,7 @@ func _count_and_play():
 	_ball_timer.start()
 
 
-func _process(delta):
+func _process(_delta):
 	_timer_label.text = str(int(_match_timer.time_left) + 1)
 	_restart_label.text = str(int(_ball_timer.time_left) + 1)
 
