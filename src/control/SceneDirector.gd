@@ -9,16 +9,16 @@ extends Node
 @export var match_tscn: PackedScene
 @export var options_tscn: PackedScene
 
-var new_scene_name: PackedScene
+var _new_scene_name: PackedScene
 
 
 func _change_to(new_scene_name):
-	self.new_scene_name = new_scene_name
+	self._new_scene_name = new_scene_name
 	self._player.play("fade")
 
 
 func _new_scene():
-	get_tree().change_scene_to_packed(self.new_scene_name)
+	get_tree().change_scene_to_packed(self._new_scene_name)
 
 
 func change_scene_to_playoffs():

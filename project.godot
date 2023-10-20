@@ -21,6 +21,7 @@ Signals="*res://src/data/signals.gd"
 SceneDirector="*res://src/control/SceneDirector.tscn"
 GameData="*res://src/control/GameData.tscn"
 MatchData="*res://src/data/match_data.gd"
+ChampionshipData="*res://src/data/championship_data.gd"
 
 [display]
 
