@@ -57,4 +57,3 @@ func _get_opponents_list():
 		opponent_list.filter(func(key): return opponents[key].size() > 0)
 	
 	return opponent_list
-

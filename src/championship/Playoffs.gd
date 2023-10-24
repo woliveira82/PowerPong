@@ -73,8 +73,3 @@ func set_panel_to_middle():
 
 func set_panel_to_end():
 	_panel_position = END
-
-
-
-
-

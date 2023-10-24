@@ -26,6 +26,7 @@ offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PlayerContainer1" type="HBoxContainer" parent="MatchContainer"]
 layout_mode = 2
@@ -98,3 +99,43 @@ text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="PlayContainer" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Label" type="Label" parent="PlayContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "PLAY MATCH?"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="ButtonContainer" type="HBoxContainer" parent="PlayContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayButton" type="Button" parent="PlayContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PLAY"
+
+[node name="CancelButton" type="Button" parent="PlayContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CANCEL"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="PlayContainer/ButtonContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PlayContainer/ButtonContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
