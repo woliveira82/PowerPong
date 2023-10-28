@@ -21,18 +21,16 @@ var _championship_name := ""
 
 func _ready():
 	var data = ChampionshipData.get_data()
-	self._championship_name = data["type"]
+	self._championship_name = data.type
 	self._set_playoff_cup(self._championship_name)
 	
 	for index in range(4):
-		self._quarter_finals[index].set_match(data["quarter_finals"][index])
+		self._quarter_finals[index].set_match(data.matches[index + 3])
 	
-	if data["semi_finals"]:
-		for index in range(2):
-			self._semi_finals[index].set_match(data["semi_finals"][index])
+	for index in range(2):
+		self._semi_finals[index].set_match(data.matches[index + 1])
 	
-	if data["final"]:
-		self._final_match.set_match(data["final"])
+	self._final_match.set_match(data.matches[0])
 
 
 func _set_playoff_cup(cup_type):
