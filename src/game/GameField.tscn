@@ -200,15 +200,6 @@ shape = SubResource("3")
 position = Vector2(135, 514)
 shape = SubResource("4")
 
-[node name="Opponent" parent="." instance=ExtResource("4")]
-position = Vector2(135, 16)
-
-[node name="Player" parent="." instance=ExtResource("3")]
-position = Vector2(135, 464)
-
-[node name="Ball" parent="." instance=ExtResource("5")]
-position = Vector2(135, 240)
-
 [node name="Interface" type="Control" parent="."]
 texture_filter = 1
 layout_mode = 3
@@ -330,11 +321,21 @@ libraries = {
 "": SubResource("AnimationLibrary_vakvj")
 }
 
+[node name="Opponent" parent="." instance=ExtResource("4")]
+position = Vector2(135, 16)
+
+[node name="Player" parent="." instance=ExtResource("3")]
+position = Vector2(135, 464)
+
+[node name="Ball" parent="." instance=ExtResource("5")]
+position = Vector2(135, 240)
+
 [node name="BallTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
 [node name="MatchTimer" type="Timer" parent="."]
+wait_time = 90.0
 one_shot = true
 
 [connection signal="body_entered" from="Field/OpponentGoal" to="." method="_on_OpponentGoal_body_entered"]

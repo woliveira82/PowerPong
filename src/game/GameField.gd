@@ -22,11 +22,12 @@ var opponent_score := 0
 
 
 func _ready():
-	_set_opponent(MatchData.get_opponent())
-	_match_timer.start()
-	_match_timer.paused = true
-	_result_panel.visible = false
-	_count_and_play()
+	self._set_opponent(MatchData.get_opponent())
+	self._player_name.text = GameData.get_player_name()
+	self._match_timer.start()
+	self._match_timer.paused = true
+	self._result_panel.visible = false
+	self._count_and_play()
 
 
 func _count_and_play():
@@ -36,7 +37,7 @@ func _count_and_play():
 
 
 func _process(_delta):
-	_timer_label.text = str(int(_match_timer.time_left) + 1)
+	_timer_label.text = str(int(_match_timer.time_left))
 	_restart_label.text = str(int(_ball_timer.time_left) + 1)
 
 
@@ -74,7 +75,7 @@ func _on_BallTimer_timeout():
 
 
 func _on_MatchTimer_timeout():
-	_ball.stop()
+	self._ball.stop()
 	var final_result = "DRAW"
 	if player_score > opponent_score:
 		final_result = "YOU\nWON"

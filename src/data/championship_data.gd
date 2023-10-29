@@ -89,7 +89,7 @@ func _parse_name(player_name: String):
 	if player_name != "PLAYER":
 		return [player_name, false]
 	
-	return ["PLAYER", true]
+	return [GameData.get_player_name(), true]
 
 
 func _create_brackets(players: Array):
