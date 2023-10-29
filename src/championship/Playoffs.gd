@@ -78,5 +78,5 @@ func _on_menu_button_pressed():
 
 
 func _on_play_button_pressed():
-	MatchData.set_opponent(ChampionshipData.get_next_opponent())
+	MatchData.set_championship_opponent(ChampionshipData.get_next_opponent())
 	SceneDirector.change_scene_to_match()

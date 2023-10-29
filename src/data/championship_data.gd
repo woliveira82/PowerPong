@@ -2,15 +2,15 @@ extends Node
 
 enum STAGE {FINAL, SEMI, QUARTERS}
 var _STAGE_MAP := {
-	1: [STAGE.QUARTERS, 1],
-	2: [STAGE.QUARTERS, 2],
-	3: [STAGE.QUARTERS, 3],
-	4: [STAGE.SEMI, 1],
-	5: [STAGE.SEMI, 2],
-	6: [STAGE.SEMI, 3],
-	7: [STAGE.FINAL, 1],
-	8: [STAGE.FINAL, 2],
-	9: [STAGE.FINAL, 3]
+	1: [STAGE.QUARTERS, 0],
+	2: [STAGE.QUARTERS, 1],
+	3: [STAGE.QUARTERS, 2],
+	4: [STAGE.SEMI, 0],
+	5: [STAGE.SEMI, 1],
+	6: [STAGE.SEMI, 2],
+	7: [STAGE.FINAL, 0],
+	8: [STAGE.FINAL, 1],
+	9: [STAGE.FINAL, 2]
 }
 const LOCAL := "LOCAL"
 const NATIONAL := "NATIONAL"
@@ -23,7 +23,11 @@ var _quarter_finals := []
 var _semi_finals := []
 var _final_match := {}
 
-var _matches := []
+var _matches : Array[Match] = []
+
+
+func _ready():
+	Signals.championship_match_ended.connect(_on_championship_match_ended)
 
 
 func get_type():
@@ -85,13 +89,14 @@ func _get_opponents_list():
 	
 	return opponent_list
 
+
 func _parse_name(name: String):
 	if name != "PLAYER":
 		return [name, false]
 	
 	return ["PLAYER", true]
-	
-	
+
+
 func _create_brackets(players: Array):
 	var final_match := Match.new(STAGE.FINAL, null, 0)
 	self._matches.append(final_match)
@@ -128,6 +133,35 @@ func _create_brackets(players: Array):
 	self._matches.append_array([quarter_1, quarter_2, quarter_3, quarter_4])
 
 
+func _on_championship_match_ended(player_score, opponent_score):
+	var parse_stage = _STAGE_MAP[self._active_stage]
+	var stage = parse_stage[0]
+	var round = parse_stage[1]
+	for m in self._matches:
+		if not m.is_stage(stage) or m.ended():
+			continue
+		
+		if m.get_human_player() != 0:
+			if m.get_human_player() == 1:
+				m.set_player1_score(round, player_score)
+				m.set_player2_score(round, opponent_score)
+				
+			else:
+				m.set_player2_score(round, player_score)
+				m.set_player1_score(round, opponent_score)
+		
+		else:
+			var p1_score = randi_range(0, 3) + Opponent.type[m.get_player1()].size()
+			var p2_score = randi_range(0, 3) + Opponent.type[m.get_player2()].size()
+			m.set_player1_score(round, p1_score)
+			m.set_player2_score(round, p2_score)
+
+		if round >= 1:
+			m.proccess_victory()
+			
+	self._active_stage += 1
+
+
 class Match:
 	var _player1: String = "-"
 	var _player1_score := ["-", "-", "-"]
@@ -141,10 +175,13 @@ class Match:
 	var _next_match : Match
 	var _next_position: int
 	
-	func _init(stage: STAGE, next_match: Match, next_position: bool):
+	func _init(stage: STAGE, next_match: Match, next_position: int):
 		self._stage = stage
 		self._next_match = next_match
 		self._next_position = next_position
+	
+	func ended():
+		return self._ended
 	
 	func set_player1(new_name: String, human: bool):
 		self._player1 = new_name
@@ -162,6 +199,15 @@ class Match:
 	func get_player2() -> String:
 		return self._player2
 	
+	func set_player1_score(index: int, value: int):
+		self._player1_score[index] = str(value)
+	
+	func set_player2_score(index: int, value: int):
+		self._player2_score[index] = str(value)
+	
+	func is_stage(stage: STAGE):
+		return self._stage == stage
+	
 	func get_opponent_active_player() -> String:
 		var opponent_name = ""
 		if self._human_player != 0 and not self._ended:
@@ -171,6 +217,50 @@ class Match:
 				opponent_name = self._player1
 		
 		return opponent_name
+	
+	func get_human_player():
+		return self._human_player
+	
+	func _get_winner():
+		var p1_victories := 0
+		var p2_victories := 0
+		var total_rounds := 0
+		for round in range(3):
+			if self._player1_score[round] == "-":
+				continue
+			
+			if int(self._player1_score[round]) > int(self._player2_score[round]):
+				p1_victories += 1
+			elif int(self._player1_score[round]) < int(self._player2_score[round]):
+				p2_victories += 1
+			
+			total_rounds += 1
+		
+		if p1_victories == 2:
+			return 1
+		
+		if p2_victories == 2:
+			return 2
+		
+		if total_rounds == 3:
+			if p2_victories > p1_victories:
+				return 2
+			
+			return 1
+		
+		return 0
+	
+	func proccess_victory():
+		var winner = self._get_winner()
+		if winner == 0:
+			return
+		
+		self._ended = true
+		var winner_name = self._player1 if winner == 1 else self._player2
+		if self._next_position == 1:
+			self._next_match.set_player1(winner_name, self._human_player == 1)
+		else:
+			self._next_match.set_player2(winner_name, self._human_player == 2)
 	
 	func dict():
 		return {
