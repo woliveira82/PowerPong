@@ -9,7 +9,6 @@ var _option_file_path = "res://assets/options.json"
 
 
 func _ready():
-	# Signals.match_ended.connect(_on_match_ended)
 	randomize()
 	_load_options()
 
