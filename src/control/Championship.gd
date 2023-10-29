@@ -38,8 +38,8 @@ func _set_random_opponent():
 	return  opponent_list[randi() % opponent_list.size()]
 
 
-func end_match(player_score, opponent_score):
+func end_match(_player_score, _opponent_score):
 	pass
-	SceneDirector.change_scene_to_playoffs()
+	# SceneDirector.change_scene_to_playoffs()
 
 

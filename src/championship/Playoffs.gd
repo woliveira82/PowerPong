@@ -39,7 +39,7 @@ func _set_playoff_cup(cup_type):
 	self._world_cup.visible = cup_type == ChampionshipData.WORLD
 
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("player_right") and not _in_animation:
 		if self._panel_position == BEGNNING:
 			self._player.play("beginning_to_middle")

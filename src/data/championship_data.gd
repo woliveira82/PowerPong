@@ -17,12 +17,7 @@ const NATIONAL := "NATIONAL"
 const WORLD := "WORLD"
 
 var _active_stage := 0
-
 var _type := ""
-var _quarter_finals := []
-var _semi_finals := []
-var _final_match := {}
-
 var _matches : Array[Match] = []
 
 
@@ -90,9 +85,9 @@ func _get_opponents_list():
 	return opponent_list
 
 
-func _parse_name(name: String):
-	if name != "PLAYER":
-		return [name, false]
+func _parse_name(player_name: String):
+	if player_name != "PLAYER":
+		return [player_name, false]
 	
 	return ["PLAYER", true]
 
@@ -134,29 +129,28 @@ func _create_brackets(players: Array):
 
 
 func _on_championship_match_ended(player_score, opponent_score):
+	# TEST
+	player_score = 1
 	var parse_stage = _STAGE_MAP[self._active_stage]
 	var stage = parse_stage[0]
-	var round = parse_stage[1]
+	var match_round = parse_stage[1]
 	for m in self._matches:
 		if not m.is_stage(stage) or m.ended():
 			continue
 		
-		if m.get_human_player() != 0:
-			if m.get_human_player() == 1:
-				m.set_player1_score(round, player_score)
-				m.set_player2_score(round, opponent_score)
-				
-			else:
-				m.set_player2_score(round, player_score)
-				m.set_player1_score(round, opponent_score)
+		if m.get_human_player() == 0:
+			m.random_result(match_round)
 		
 		else:
-			var p1_score = randi_range(0, 3) + Opponent.type[m.get_player1()].size()
-			var p2_score = randi_range(0, 3) + Opponent.type[m.get_player2()].size()
-			m.set_player1_score(round, p1_score)
-			m.set_player2_score(round, p2_score)
-
-		if round >= 1:
+			if m.get_human_player() == 1:
+				m.set_player1_score(match_round, player_score)
+				m.set_player2_score(match_round, opponent_score)
+				
+			else:
+				m.set_player2_score(match_round, player_score)
+				m.set_player1_score(match_round, opponent_score)
+		
+		if match_round >= 1:
 			m.proccess_victory()
 			
 	self._active_stage += 1
@@ -225,13 +219,13 @@ class Match:
 		var p1_victories := 0
 		var p2_victories := 0
 		var total_rounds := 0
-		for round in range(3):
-			if self._player1_score[round] == "-":
+		for match_round in range(3):
+			if self._player1_score[match_round] == "-":
 				continue
 			
-			if int(self._player1_score[round]) > int(self._player2_score[round]):
+			if int(self._player1_score[match_round]) > int(self._player2_score[match_round]):
 				p1_victories += 1
-			elif int(self._player1_score[round]) < int(self._player2_score[round]):
+			elif int(self._player1_score[match_round]) < int(self._player2_score[match_round]):
 				p2_victories += 1
 			
 			total_rounds += 1
@@ -261,6 +255,10 @@ class Match:
 			self._next_match.set_player1(winner_name, self._human_player == 1)
 		else:
 			self._next_match.set_player2(winner_name, self._human_player == 2)
+	
+	func random_result(match_round: int):
+		self._player1_score[match_round] = str(Opponent.type[self._player1].size() + randi() % 5)
+		self._player2_score[match_round] = str(Opponent.type[self._player2].size() + randi() % 5)
 	
 	func dict():
 		return {

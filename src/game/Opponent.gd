@@ -41,7 +41,7 @@ func set_opponent(new_type: String):
 		_go_middle = true
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	self.velocity = Vector2(self._get_direction(), 0.0) * self._speed
 	move_and_slide()
 
