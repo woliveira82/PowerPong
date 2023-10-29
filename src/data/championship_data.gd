@@ -25,13 +25,6 @@ var _final_match := {}
 
 var _matches := []
 
-#{
-#	"player_1": "nome",
-#	"results_1": [0,0,0],
-#	"player_2": "nome 2",
-#	"results_2": [0, 0, 0],
-#}
-
 
 func get_type():
 	if not self._type:
@@ -51,8 +44,19 @@ func get_data():
 	}
 
 
+func get_next_opponent():
+	var opponent_name := ""
+	for m in self._matches:
+		opponent_name = m.get_opponent_active_player()
+		if opponent_name != "":
+			return opponent_name
+	
+	return "JACK"
+
+
 func _start_new_championship(type):
 	self._type = type
+	self._active_stage = 1
 	var championship_players := ["PLAYER"]
 	_add_opponents(championship_players)
 	_create_brackets(championship_players)
@@ -81,7 +85,13 @@ func _get_opponents_list():
 	
 	return opponent_list
 
-
+func _parse_name(name: String):
+	if name != "PLAYER":
+		return [name, false]
+	
+	return ["PLAYER", true]
+	
+	
 func _create_brackets(players: Array):
 	var final_match := Match.new(STAGE.FINAL, null, 0)
 	self._matches.append(final_match)
@@ -90,14 +100,31 @@ func _create_brackets(players: Array):
 	var semi_2 := Match.new(STAGE.SEMI, final_match, 2)
 	self._matches.append_array([semi_1, semi_2])
 	
+	var name_parsed
 	var quarter_1 := Match.new(STAGE.QUARTERS, semi_1, 1)
-	quarter_1.set_players(players[0], players[1])
+	name_parsed = self._parse_name(players[0])
+	quarter_1.set_player1(name_parsed[0], name_parsed[1])
+	name_parsed = self._parse_name(players[1])
+	quarter_1.set_player2(name_parsed[0], name_parsed[1])
+	
 	var quarter_2 := Match.new(STAGE.QUARTERS, semi_1, 2)
-	quarter_2.set_players(players[2], players[3])
+	name_parsed = self._parse_name(players[2])
+	quarter_2.set_player1(name_parsed[0], name_parsed[1])
+	name_parsed = self._parse_name(players[3])
+	quarter_2.set_player2(name_parsed[0], name_parsed[1])
+	
 	var quarter_3 := Match.new(STAGE.QUARTERS, semi_2, 1)
-	quarter_3.set_players(players[4], players[5])
+	name_parsed = self._parse_name(players[4])
+	quarter_3.set_player1(name_parsed[0], name_parsed[1])
+	name_parsed = self._parse_name(players[5])
+	quarter_3.set_player2(name_parsed[0], name_parsed[1])
+	
 	var quarter_4 := Match.new(STAGE.QUARTERS, semi_2, 2)
-	quarter_4.set_players(players[6], players[7])
+	name_parsed = self._parse_name(players[6])
+	quarter_4.set_player1(name_parsed[0], name_parsed[1])
+	name_parsed = self._parse_name(players[7])
+	quarter_4.set_player2(name_parsed[0], name_parsed[1])
+	
 	self._matches.append_array([quarter_1, quarter_2, quarter_3, quarter_4])
 
 
@@ -119,9 +146,31 @@ class Match:
 		self._next_match = next_match
 		self._next_position = next_position
 	
-	func set_players(player1: String, player2: String):
-		self._player1 = player1
-		self._player2 = player2
+	func set_player1(new_name: String, human: bool):
+		self._player1 = new_name
+		if human:
+			self._human_player = 1
+	
+	func get_player1() -> String:
+		return self._player1
+	
+	func set_player2(new_name: String, human: bool):
+		self._player2 = new_name
+		if human:
+			self._human_player = 2
+	
+	func get_player2() -> String:
+		return self._player2
+	
+	func get_opponent_active_player() -> String:
+		var opponent_name = ""
+		if self._human_player != 0 and not self._ended:
+			if self._human_player == 1:
+				opponent_name = self._player2
+			else:
+				opponent_name = self._player1
+		
+		return opponent_name
 	
 	func dict():
 		return {

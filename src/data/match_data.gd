@@ -5,7 +5,10 @@ var _opponent_type := ""
 
 func _ready():
 	Signals.match_ended.connect(_on_match_ended)
-	Signals.field_loaded.connect(_on_field_loaded)
+
+
+func set_opponent(opponent: String):
+	self._opponent_type = opponent
 
 
 func get_opponent():
@@ -15,9 +18,6 @@ func get_opponent():
 	
 	return self._opponent_type
 
-
-func _on_field_loaded():
-	Signals.match_data_setted.emit(self.get_opponent())
 
 
 func _on_match_ended(_player_score, _opponent_score):

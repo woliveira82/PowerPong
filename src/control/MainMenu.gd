@@ -2,7 +2,6 @@ extends CanvasLayer
 
 
 func _on_FastMatch_pressed():
-	GameData._set_random_opponent()
 	SceneDirector.change_scene_to_match()
 
 

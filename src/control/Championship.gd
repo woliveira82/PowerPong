@@ -22,9 +22,11 @@ func new_championship():
 			match_list.append($Match.new('Quarter Finals', n, palette_A, palette_B))
 		else:
 			if randf() > 0.5: 
-				match_list.append($Match.new('Quarter Finals', n, GameData.player_name , palette_B, 1))
-			else: 
-				match_list.append($Match.new('Quarter Finals', n, palette_A, GameData.player_name, 2))
+				pass
+#				match_list.append($Match.new('Quarter Finals', n, GameData.player_name , palette_B, 1))
+			else:
+				pass
+#				match_list.append($Match.new('Quarter Finals', n, palette_A, GameData.player_name, 2))
 
 
 func _set_random_opponent():

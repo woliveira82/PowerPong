@@ -22,9 +22,7 @@ var opponent_score := 0
 
 
 func _ready():
-	Signals.match_data_setted.connect(_on_match_data_setted)
-	Signals.field_loaded.emit()
-	_player_name.text = GameData.player_name
+	_set_opponent(MatchData.get_opponent())
 	_match_timer.start()
 	_match_timer.paused = true
 	_result_panel.visible = false
@@ -93,7 +91,7 @@ func end_game():
 	Signals.match_ended.emit(player_score, opponent_score)
 
 
-func _on_match_data_setted(opponent_name):
+func _set_opponent(opponent_name):
 	_opponent.set("ball", _ball)
 	_opponent.set_opponent(opponent_name)
 	_opponent_name.text = opponent_name
