@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhc0a7x2lrqt7"]
+[gd_scene load_steps=12 format=3 uid="uid://dhc0a7x2lrqt7"]
 
 [ext_resource type="Script" path="res://src/championship/Playoffs.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://c58ksuetrit2l" path="res://assets/images/WorldCup.png" id="4"]
@@ -9,25 +9,49 @@
 [sub_resource type="Animation" id="Animation_gsw5n"]
 resource_name = "beginning_to_middle"
 length = 1.1
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"animation_started"
+}, {
+"args": [],
+"method": &"set_panel_to_middle"
+}, {
+"args": [],
+"method": &"animation_ended"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Brackets:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-270, 0)]
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
+
+[sub_resource type="Animation" id="Animation_1b6br"]
+resource_name = "end_to_middle"
+length = 1.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 1.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
@@ -41,65 +65,29 @@ tracks/1/keys = {
 "method": &"animation_ended"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_1b6br"]
-resource_name = "end_to_middle"
-length = 1.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Brackets:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-540, 0), Vector2(-270, 0)]
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"animation_started"
-}, {
-"args": [],
-"method": &"set_panel_to_middle"
-}, {
-"args": [],
-"method": &"animation_ended"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_3bqya"]
 resource_name = "middle_to_beginning"
 length = 1.1
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-270, 0), Vector2(0, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 1.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
@@ -113,29 +101,29 @@ tracks/1/keys = {
 "method": &"animation_ended"
 }]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Brackets:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-270, 0), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_0bwjn"]
 resource_name = "middle_to_end"
 length = 1.1
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-270, 0), Vector2(-540, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 1.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
@@ -149,17 +137,55 @@ tracks/1/keys = {
 "method": &"animation_ended"
 }]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Brackets:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-270, 0), Vector2(-540, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jiqol"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Brackets:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ohn5f"]
 _data = {
+"RESET": SubResource("Animation_jiqol"),
 "beginning_to_middle": SubResource("Animation_gsw5n"),
 "end_to_middle": SubResource("Animation_1b6br"),
 "middle_to_beginning": SubResource("Animation_3bqya"),
 "middle_to_end": SubResource("Animation_0bwjn")
 }
 
-[node name="Playoffs" type="ColorRect"]
+[node name="Playoffs" type="Control"]
 texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3")
+
+[node name="Brackets" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -167,9 +193,8 @@ offset_right = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-script = ExtResource("3")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="StageContainer" type="HBoxContainer" parent="Brackets"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -182,37 +207,37 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="LeftLine1" type="Line2D" parent="HBoxContainer"]
-points = PackedVector2Array(266, 159, 245, 124)
+[node name="LeftLine1" type="Line2D" parent="Brackets/StageContainer"]
+points = PackedVector2Array(240, 77, 270, 107)
 width = 4.0
 
-[node name="LeftLine2" type="Line2D" parent="HBoxContainer"]
-points = PackedVector2Array(267, 193, 245, 219)
+[node name="LeftLine2" type="Line2D" parent="Brackets/StageContainer"]
+points = PackedVector2Array(240, 171, 270, 141)
 width = 4.0
 
-[node name="LeftLine3" type="Line2D" parent="HBoxContainer"]
-points = PackedVector2Array(266, 323, 246, 313)
+[node name="LeftLine3" type="Line2D" parent="Brackets/StageContainer"]
+points = PackedVector2Array(240, 266, 271, 297)
 width = 4.0
 
-[node name="LeftLine4" type="Line2D" parent="HBoxContainer"]
-points = PackedVector2Array(266, 357, 246, 410)
+[node name="LeftLine4" type="Line2D" parent="Brackets/StageContainer"]
+points = PackedVector2Array(240, 361, 270, 331)
 width = 4.0
 
-[node name="RightLine1" type="Line2D" parent="HBoxContainer"]
-points = PackedVector2Array(510, 176, 532, 241)
+[node name="RightLine1" type="Line2D" parent="Brackets/StageContainer"]
+points = PackedVector2Array(505, 90, 535, 220)
 width = 4.0
 
-[node name="RightLine2" type="Line2D" parent="HBoxContainer"]
-points = PackedVector2Array(509, 341, 532, 275)
+[node name="RightLine2" type="Line2D" parent="Brackets/StageContainer"]
+points = PackedVector2Array(505, 350, 535, 220)
 width = 4.0
 
-[node name="QuarterFinals" type="VBoxContainer" parent="HBoxContainer"]
+[node name="QuarterFinals" type="VBoxContainer" parent="Brackets/StageContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 11.0
 theme_override_constants/separation = 16
 
-[node name="StageLabel" type="Label" parent="HBoxContainer/QuarterFinals"]
+[node name="StageLabel" type="Label" parent="Brackets/StageContainer/QuarterFinals"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "QUARTER-FINALS"
@@ -220,29 +245,29 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Space" type="Control" parent="HBoxContainer/QuarterFinals"]
+[node name="MatchBackground1" parent="Brackets/StageContainer/QuarterFinals" instance=ExtResource("10_ps6bj")]
+layout_mode = 2
+
+[node name="MatchBackground2" parent="Brackets/StageContainer/QuarterFinals" instance=ExtResource("10_ps6bj")]
+layout_mode = 2
+
+[node name="MatchBackground3" parent="Brackets/StageContainer/QuarterFinals" instance=ExtResource("10_ps6bj")]
+layout_mode = 2
+
+[node name="MatchBackground4" parent="Brackets/StageContainer/QuarterFinals" instance=ExtResource("10_ps6bj")]
+layout_mode = 2
+
+[node name="Space" type="Control" parent="Brackets/StageContainer/QuarterFinals"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MatchBackground1" parent="HBoxContainer/QuarterFinals" instance=ExtResource("10_ps6bj")]
-layout_mode = 2
-
-[node name="MatchBackground2" parent="HBoxContainer/QuarterFinals" instance=ExtResource("10_ps6bj")]
-layout_mode = 2
-
-[node name="MatchBackground3" parent="HBoxContainer/QuarterFinals" instance=ExtResource("10_ps6bj")]
-layout_mode = 2
-
-[node name="MatchBackground4" parent="HBoxContainer/QuarterFinals" instance=ExtResource("10_ps6bj")]
-layout_mode = 2
-
-[node name="SemiFinals" type="VBoxContainer" parent="HBoxContainer"]
+[node name="SemiFinals" type="VBoxContainer" parent="Brackets/StageContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 11.0
 theme_override_constants/separation = 16
 
-[node name="StageLabel" type="Label" parent="HBoxContainer/SemiFinals"]
+[node name="StageLabel" type="Label" parent="Brackets/StageContainer/SemiFinals"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "SEMI-FINALS"
@@ -250,34 +275,33 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Space" type="Control" parent="HBoxContainer/SemiFinals"]
+[node name="Space" type="Control" parent="Brackets/StageContainer/SemiFinals"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MatchBackground1" parent="Brackets/StageContainer/SemiFinals" instance=ExtResource("10_ps6bj")]
+layout_mode = 2
+
+[node name="SpaceMiddle" type="Control" parent="Brackets/StageContainer/SemiFinals"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="MatchBackground1" parent="HBoxContainer/SemiFinals" instance=ExtResource("10_ps6bj")]
+[node name="MatchBackground2" parent="Brackets/StageContainer/SemiFinals" instance=ExtResource("10_ps6bj")]
 layout_mode = 2
 
-[node name="SpaceMiddle" type="Control" parent="HBoxContainer/SemiFinals"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="MatchBackground2" parent="HBoxContainer/SemiFinals" instance=ExtResource("10_ps6bj")]
-layout_mode = 2
-
-[node name="SpaceBottom" type="Control" parent="HBoxContainer/SemiFinals"]
+[node name="SpaceBottom" type="Control" parent="Brackets/StageContainer/SemiFinals"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
+size_flags_stretch_ratio = 3.0
 
-[node name="FinalMatch" type="VBoxContainer" parent="HBoxContainer"]
+[node name="FinalMatch" type="VBoxContainer" parent="Brackets/StageContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 11.0
 theme_override_constants/separation = 16
 
-[node name="StageLabel" type="Label" parent="HBoxContainer/FinalMatch"]
+[node name="StageLabel" type="Label" parent="Brackets/StageContainer/FinalMatch"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "FINALS"
@@ -285,44 +309,73 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Space" type="Control" parent="HBoxContainer/FinalMatch"]
+[node name="LocalCup" type="TextureRect" parent="Brackets/StageContainer/FinalMatch"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 1.5
-
-[node name="LocalCup" type="TextureRect" parent="HBoxContainer/FinalMatch"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 4.0
+size_flags_stretch_ratio = 4.6
 texture = ExtResource("6")
 stretch_mode = 5
 
-[node name="NationalCup" type="TextureRect" parent="HBoxContainer/FinalMatch"]
+[node name="NationalCup" type="TextureRect" parent="Brackets/StageContainer/FinalMatch"]
 visible = false
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.6
 texture = ExtResource("5")
 stretch_mode = 5
 
-[node name="WorldCup" type="TextureRect" parent="HBoxContainer/FinalMatch"]
+[node name="WorldCup" type="TextureRect" parent="Brackets/StageContainer/FinalMatch"]
 visible = false
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.6
 texture = ExtResource("4")
 stretch_mode = 5
 
-[node name="MatchBackground1" parent="HBoxContainer/FinalMatch" instance=ExtResource("10_ps6bj")]
+[node name="MatchBackground1" parent="Brackets/StageContainer/FinalMatch" instance=ExtResource("10_ps6bj")]
 layout_mode = 2
 
-[node name="Space2" type="Control" parent="HBoxContainer/FinalMatch"]
+[node name="Space" type="Control" parent="Brackets/StageContainer/FinalMatch"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.5
 
-[node name="SpaceBottom" type="Control" parent="HBoxContainer/FinalMatch"]
+[node name="Space2" type="Control" parent="Brackets/StageContainer/FinalMatch"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.4
+
+[node name="SpaceBottom" type="Control" parent="Brackets/StageContainer/FinalMatch"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
+
+[node name="ButtonContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -41.0
+offset_right = -8.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PlayButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "NEXT ROUND"
+
+[node name="MenuButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MAIN MENU"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ohn5f")
 }
+
+[connection signal="pressed" from="ButtonContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/MenuButton" to="." method="_on_menu_button_pressed"]

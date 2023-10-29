@@ -1,4 +1,4 @@
-extends ColorRect
+extends Control
 
 enum {BEGNNING, MIDDLE, END}
 
@@ -6,17 +6,17 @@ var _panel_position := BEGNNING
 var _in_animation := false
 var _championship_name := ""
 
-@onready var _local_cup := $HBoxContainer/FinalMatch/LocalCup
-@onready var _national_cup := $HBoxContainer/FinalMatch/NationalCup
-@onready var _world_cup := $HBoxContainer/FinalMatch/WorldCup
+@onready var _local_cup := $Brackets/StageContainer/FinalMatch/LocalCup
+@onready var _national_cup := $Brackets/StageContainer/FinalMatch/NationalCup
+@onready var _world_cup := $Brackets/StageContainer/FinalMatch/WorldCup
 @onready var _player := $AnimationPlayer
-@onready var _quarter_finals := $HBoxContainer/QuarterFinals.find_children(
+@onready var _quarter_finals := $Brackets/StageContainer/QuarterFinals.find_children(
 	"MatchBackground?", "ColorRect", false
 )
-@onready var _semi_finals := $HBoxContainer/SemiFinals.find_children(
+@onready var _semi_finals := $Brackets/StageContainer/SemiFinals.find_children(
 	"MatchBackground?", "ColorRect", false
 )
-@onready var _final_match := $HBoxContainer/FinalMatch/MatchBackground1
+@onready var _final_match := $Brackets/StageContainer/FinalMatch/MatchBackground1
 
 
 func _ready():
@@ -71,3 +71,11 @@ func set_panel_to_middle():
 
 func set_panel_to_end():
 	_panel_position = END
+
+
+func _on_menu_button_pressed():
+	SceneDirector.change_scene_to_menu()
+
+
+func _on_play_button_pressed():
+	SceneDirector.change_scene_to_match()
