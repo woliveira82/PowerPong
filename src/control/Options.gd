@@ -1,4 +1,4 @@
-extends Panel
+extends ColorRect
 
 @onready var _player_name := $VBox/NameEdit
 @onready var _music_check := $VBox/MusicCheck

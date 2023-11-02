@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://cya5ponahvi3x"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cya5ponahvi3x"]
 
 [ext_resource type="FontFile" uid="uid://du3421x6ajkbl" path="res://assets/fonts/digitalix.ttf" id="1"]
+[ext_resource type="Texture2D" uid="uid://cuys5p0jnf101" path="res://assets/images/checked.png" id="2_otl5w"]
+[ext_resource type="Texture2D" uid="uid://1yuikocmasxc" path="res://assets/images/unchecked.png" id="3_rc24f"]
 
 [sub_resource type="FontFile" id="1"]
 fallbacks = Array[Font]([ExtResource("1")])
@@ -47,6 +49,8 @@ Button/styles/focus = SubResource("2")
 Button/styles/hover = SubResource("3")
 Button/styles/normal = SubResource("4")
 Button/styles/pressed = SubResource("5")
+CheckButton/icons/checked = ExtResource("2_otl5w")
+CheckButton/icons/unchecked = ExtResource("3_rc24f")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_color_shadow = Color(0, 0, 0, 0)
 Label/colors/font_outline_modulate = Color(1, 1, 1, 1)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxfl0ksh15n7c"]
+[gd_scene load_steps=11 format=3 uid="uid://bxfl0ksh15n7c"]
 
 [ext_resource type="FontFile" uid="uid://du3421x6ajkbl" path="res://assets/fonts/digitalix.ttf" id="1"]
+[ext_resource type="Theme" uid="uid://cya5ponahvi3x" path="res://assets/PowerPong.tres" id="1_klvox"]
 [ext_resource type="Script" path="res://src/control/Options.gd" id="5"]
 
 [sub_resource type="FontFile" id="2"]
@@ -66,12 +67,14 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[node name="Options" type="Panel"]
+[node name="Options" type="ColorRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_klvox")
+color = Color(0, 0, 0, 1)
 script = ExtResource("5")
 
 [node name="VBox" type="VBoxContainer" parent="."]
