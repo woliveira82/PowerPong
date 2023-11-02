@@ -26,3 +26,6 @@ func _on_match_ended(player_score, opponent_score):
 	if self._championship_match:
 		Signals.championship_match_ended.emit(player_score, opponent_score)
 		SceneDirector.change_scene_to_playoffs()
+	
+	else:
+		SceneDirector.change_scene_to_menu()

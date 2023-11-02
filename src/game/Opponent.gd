@@ -17,7 +17,7 @@ const MIDDLE_FIELD := Vector2(135.0, 240.0)
 
 const BIGGER_SIZE := Vector2(8.0, 78.0)
 const BIGGER_SPRITE_X_SCALE := 2.438
-const FASTER_SPEED := 270
+const FASTER_SPEED := 225
 
 var ball: Node2D
 var _speed := 180
